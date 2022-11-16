@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            {% block title %}{% endblock title %} | Learning Cards
+        </title>
+        <meta property="og:title" content="Learning Cards">
+        <meta property="og:type" content="website">
+        <meta property="og:description" content="Web application with flash learning cards">
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:locale:alternate" content="es_ES" />
+        <meta property="og:locale:alternate" content="es_AR" />
+        <meta property="og:locale:alternate" content="es_US" />
+        <link rel="icon" href="{% static 'icons/favicon.png' %}" type="image/png">
+        <link rel="shortcut icon" href="{% static 'icons/favicon.png' %}" type="image/png">
+        <link rel="stylesheet" href="{% static 'css/movil_styles.css' %}" rel="preload" as="style">
+        <link rel="stylesheet" href="{% static 'css/icons.css' %}" rel="preload" as="style"> 
+        {% comment %} 
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}" rel="preload" as="style">
+        <link rel="stylesheet" href="{% static 'css/tablet_styles.css' %}" media="screen and (max-width:800px)">
+        {% endcomment %}
+    </head>
+
+    <body>
+        <header>
+            {% include 'snippets/navbar.html' %}
+        </header>
+        <main>
+            {% include 'snippets/popup_message.html' %}
+            {% block content %}
+            {% endblock content %}
+        </main>
+        <footer>
+            {% include 'snippets/content_footer.html' %}
+        </footer>
+        {% include 'snippets/dialog-box.html' %}
+        {% comment %} <section class="modal modal__contactMe">
+            {% include 'mainapp/modals/modal_contactMe.html' %}
+        </section> {% endcomment %}
+    </body>
+    {% comment %} <script src="{% static '/js/interactive-icons.js' %}" rel="preload" as="script" async></script> {% endcomment %}
+
+    {% block scripts %}{% endblock scripts %}
+</html> 

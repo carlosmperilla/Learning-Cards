@@ -1,0 +1,22 @@
+<div class="burger-button__content">
+    <button class="icon-menu3"></button>
+</div>
+
+<nav id="principal__menu">
+    <ul>
+        {% if not request.user.is_authenticated %}
+            <li>
+                <a href="{% url 'signup' %}">Registrarse</a>
+            </li>
+            <li>
+                <a href="{% url 'login' %}">Iniciar Sesión</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+
+<div class="gadgets__content">
+    <button class="icon-earth"></button>
+    <span class="lang-option__text lang-option__text--selected">EN</span>
+    <span class="lang-option__text">ES</span>
+</div>

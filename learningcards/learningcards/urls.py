@@ -21,6 +21,7 @@ from django.views.static import serve
 
 urlpatterns = [
     path('kit/', include('kit.urls')),
+    path('', include('templatetranslation.urls')),
     path('', include('mainapp.urls')),
     path('', include('users.urls')),
     path('admin/', admin.site.urls),

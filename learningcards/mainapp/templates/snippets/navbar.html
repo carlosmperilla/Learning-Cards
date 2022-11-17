@@ -5,10 +5,10 @@
 <nav id="principal__menu">
     <ul>
         {% if not request.user.is_authenticated %}
-            <li>
+            <li class="signup-navbar__li">
                 <a href="{% url 'signup' %}">Registrarse</a>
             </li>
-            <li>
+            <li class="login-navbar__li">
                 <a href="{% url 'login' %}">Iniciar Sesión</a>
             </li>
         {% endif %}
@@ -17,6 +17,6 @@
 
 <div class="gadgets__content">
     <button class="icon-earth"></button>
-    <span class="lang-option__text lang-option__text--selected">EN</span>
-    <span class="lang-option__text">ES</span>
+    <span class="lang-option__text">EN</span>
+    <span class="lang-option__text lang-option__text--selected">ES</span>
 </div>

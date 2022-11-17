@@ -115,10 +115,10 @@ header .gadgets__content .lang-option__text.lang-option__text--selected {
 
 header #principal__menu {
     display: none;
-    position: absolute;
+    position: fixed;
     top: var(--header--height);
     width: 100%;
-    height: calc(100vh - var(--header--height));
+    bottom: 0;
     background-color: var(--dropdown-menu);
     z-index: 1;
 }

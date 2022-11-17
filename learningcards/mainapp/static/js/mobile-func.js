@@ -5,11 +5,14 @@ const principalMenu = document.getElementById("principal__menu");
 
 function showOrCollapseMenu(){
     burgerButtonBox.classList.toggle("burger-button__content--show");
-    console.log(principalMenu.style.display)
     if (principalMenu.style.display === "") {
         principalMenu.style.display = "flex";
+        burgerButton.classList.remove("icon-menu3");
+        burgerButton.classList.add("icon-menu4");
     } else {
         principalMenu.style.display = null;
+        burgerButton.classList.remove("icon-menu4");
+        burgerButton.classList.add("icon-menu3");
     }
 }
 

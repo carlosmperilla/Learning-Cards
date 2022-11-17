@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     'mainapp.apps.MainappConfig',
+    'templatetranslation.apps.TemplatetranslationConfig',
     'kit.apps.KitConfig',
     'card.apps.CardConfig',
     'users.apps.UsersConfig',

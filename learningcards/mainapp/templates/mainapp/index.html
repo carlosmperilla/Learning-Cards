@@ -14,5 +14,5 @@
 {% endblock content %}
 
 {% block scripts %}
-    <script src={% static 'js/mobile-func.js' %} async></script>
+    <script>const url_template_translation = "{% url 'templatetranslation:get_translate' request.resolver_match.url_name %}";</script>
 {% endblock scripts %}

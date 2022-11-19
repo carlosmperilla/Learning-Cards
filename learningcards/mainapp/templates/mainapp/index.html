@@ -1,0 +1,25 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block content %}
+    <section class="main__content">
+        {% if request.user.is_authenticated %}
+            {% include 'mainapp/index_state/index_authenticated.html' %}
+        {% else %}
+            {% include 'mainapp/index_state/index_not_authenticated.html' %}
+        {% endif %}
+    </section>
+{% endblock content %}
+
+{% block scripts %}
+    <script>const url_template_translation = "{% url 'templatetranslation:get_translate' request.resolver_match.url_name %}";</script>
+    {% if not request.user.is_authenticated %}
+        <script>const url_signup = "{% url 'signup' %}";</script>
+        <script>const url_login = "{% url 'login' %}";</script>
+        <script src="{% static 'js/forms-func.js' %}"></script>
+    {% endif %}
+{% endblock scripts %}

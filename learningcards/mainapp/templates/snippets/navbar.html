@@ -1,0 +1,30 @@
+<div class="burger-button__content">
+    <button class="icon-menu3"></button>
+</div>
+
+<nav id="principal__menu">
+    <ul>
+        {% if not request.user.is_authenticated %}
+            <li class="signup-navbar__li">
+                <button class="signUp__button--show-dialog dialog__button">
+                    Registrarse
+                </button>
+            </li>
+            <li class="login-navbar__li">
+                <button class="logIn__button--show-dialog dialog__button">
+                    Iniciar Sesión
+                </button>
+            </li>
+        {% else %}
+            <li class="user-navbar__li">
+                <a href="{% url 'logout' %}?next={% url 'index' %}">Salir</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+
+<div class="gadgets__content">
+    <button class="icon-earth"></button>
+    <span class="lang-option__text lang-option__en">EN</span>
+    <span class="lang-option__text  lang-option__es lang-option__text--selected">ES</span>
+</div>

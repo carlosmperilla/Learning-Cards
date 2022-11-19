@@ -1,0 +1,16 @@
+{% if messages %}
+    {% for message in messages %}
+        <div class="popup__message  
+                        {% if message.level == 25 %} 
+                            success-level
+                        {% elif message.level == 20 %} 
+                            info-level
+                        {% elif message.level == 30 %} 
+                            warning-level
+                        {% elif message.level == 40 %} 
+                            error-level
+                        {% endif %}">
+            {{ message | safe }}
+        </div>
+    {% endfor %}
+{% endif %}

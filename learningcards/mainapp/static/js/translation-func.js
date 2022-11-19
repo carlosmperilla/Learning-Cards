@@ -1,5 +1,3 @@
-const csrftoken = getCookie('csrftoken');
-
 const gadgetsButtonBox = document.querySelector(".gadgets__content");
 const translateButton = gadgetsButtonBox.querySelector("button");
 const langOptionsText = gadgetsButtonBox.querySelectorAll(".lang-option__text");
@@ -26,11 +24,10 @@ function getJsonTranslation(){
         {
             method: 'POST',
             headers: {
-                'X-CSRFToken': csrftoken,
+                'X-CSRFToken': getCookie('csrftoken'),
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            // body: "",
             mode: 'same-origin' // Do not send CSRF token to another domain.
         }
             );

@@ -1,8 +1,93 @@
 <div class="dialog-box">
-    <dialog class="modal modal--howToUse">
-
+    <dialog class="modal signUp__modal">
+        <button class="modal__button--close">
+            X
+        </button>
+        <section class="modal__content">
+            <section class="modal__content__title">
+                Registrarse
+            </section>
+            <section class="modal__content__description">
+                <div class="form__error-box"></div>
+                <form id="form__signup" action="" method="post">
+                    {% csrf_token %}
+                    {% for field in signup_form %}
+                        <div class="field__group">
+                            <label for="{{ field.auto_id }}">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                </form>
+                
+                <div class="button__container">
+                    <button type="submit" form="form__signup" class="">Registrarse</button>
+                </div>
+            </section>
+        </section>
     </dialog>
-    <dialog class="modal modal--contactMe">
 
+    <dialog class="modal logIn__modal">
+        <button class="modal__button--close">
+            X
+        </button>
+        <section class="modal__content">
+            <section class="modal__content__title">
+                <span class="icon-enter"></span> Iniciar Sesión
+            </section>
+            <section class="modal__content__description">
+                <div class="form__error-box"></div>
+                <form id="form__login" action="" method="post">
+                    {% csrf_token %}
+                    {% for field in login_form %}
+                        <div class="field__group">
+                            <label for="{{ field.auto_id }}">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                </form>
+                
+                <div class="button__container">
+                    <button type="submit" form="form__login" class="">Iniciar sesión</button>
+                </div>
+            </section>
+        </section>
+    </dialog>    
+    
+    <dialog class="modal howToUse__modal">
+        <button class="modal__button--close">
+            X
+        </button>
+        <section class="modal__content">
+            <section class="modal__content__title">
+                ¿Cómo usar?
+            </section>
+            <section class="modal__content__description">
+                {% lorem 9 %}
+            </section>
+        </section>
+    </dialog>
+    
+    <dialog class="modal contactMe__modal">
+        <button class="modal__button--close">
+            X
+        </button>
+        <section class="modal__content">
+            <section class="modal__content__title">
+                Contacto
+            </section>
+            <section class="modal__content__description">
+                <h3>Puedes ver mis proyectos en desarrollo aquí:</h3>
+                <a href="https://github.com/carlosmperilla" target="_black">https://github.com/carlosmperilla</a>
+
+                <h3>Repositorio de este proyecto:</h3>
+                <a href="https://github.com/carlosmperilla/Learning-Cards" target="_black">https://github.com/carlosmperilla/Learning-Cards</a>
+       
+                <span class="email--contact">
+                    <strong>Correo: </strong>carlosperillaprogramacion@gmail.com
+                </span>
+            </section>
+        </section>
     </dialog>
 </div>
+
+

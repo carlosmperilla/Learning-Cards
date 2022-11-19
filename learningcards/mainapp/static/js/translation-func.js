@@ -71,9 +71,21 @@ function translateTemplate(){
             
             if (element !== null){
                 if (localStorage.getItem('lc-lang') === 'es') {
-                    element.innerHTML = obj.spanish_text;
+                    document.querySelector(".lang-option__es").classList.add("lang-option__text--selected");
+                    document.querySelector(".lang-option__en").classList.remove("lang-option__text--selected");
+                    if (element.tagName === "INPUT"){
+                        element.placeholder = obj.spanish_text;
+                    } else {
+                        element.innerHTML = obj.spanish_text;
+                    }
                 } else {
-                    element.innerHTML = obj.english_text;
+                    document.querySelector(".lang-option__en").classList.add("lang-option__text--selected");
+                    document.querySelector(".lang-option__es").classList.remove("lang-option__text--selected");
+                    if (element.tagName === "INPUT"){
+                        element.placeholder = obj.english_text;
+                    } else {
+                        element.innerHTML = obj.english_text;
+                    }
                 }
             }
             
@@ -82,6 +94,12 @@ function translateTemplate(){
 }
 
 function setDefaultLanguage(){
+
+    if (localStorage.getItem('lc-lang') !== null){
+        translateTemplate();
+        return localStorage.getItem('lc-lang');
+    }
+
     let userLang = navigator.language || navigator.userLanguage;
     userLang = userLang.split('-')[0].toLowerCase();
 

@@ -6,7 +6,11 @@
     --dropdown-menu: #6c51b1;
     --dropdown-menu--active: #3f2f67;
     --footer--height: 40px;
+    --footer--bg-color: #6e5b9e;
+    --footer--b-shadow: 0 -2px 10px #060694;
     --nav--color: #ffe3bf;
+    --dialog__title--bg-color: #d6b262;
+    --dialog__title--color: #655c33;
 }
 
 ::selection {
@@ -32,9 +36,10 @@ html {
 
 body {
     display: grid;
+    min-height: 100vh;
     height: 100%;
     grid-template-rows: var(--header--height) 1fr var(--footer--height);
-
+    position: relative;
 }
 
 p {
@@ -61,6 +66,7 @@ header {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    z-index: 1;
 }
 
 header .burger-button__content,
@@ -103,9 +109,6 @@ header .gadgets__content .lang-option__text {
 header .gadgets__content .lang-option__text:last-child {
     left: auto;
     right: calc(50% - 26px);
-    /* background: transparent;
-    color: var(--nav--color);
-    border: 1px solid var(--nav--color); */
 }
 
 header .gadgets__content .lang-option__text.lang-option__text--selected {
@@ -141,6 +144,23 @@ header #principal__menu ul li {
     padding-bottom: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+header #principal__menu ul li button {
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    border: none;
+    color: var(--nav-color);
+    font-size: 4rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    user-select: none;
 }
 
 header #principal__menu ul li a {
@@ -153,15 +173,403 @@ header #principal__menu ul li:active {
     background-color: var(--dropdown-menu--active);
 }
 
+/* MAIN */
+
+main {
+    background-color: cornsilk;
+    height: 100%;
+}
+
+main .main__content {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .main__content .main__content__call-to-action {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.main__content__call-to-action button {
+    font-size: xx-large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: normal;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    user-select: none;
+    background: linear-gradient(45deg, #5f3f07, #c19f70);
+    color: white;
+    transition: .3s all ease;
+}
+
+.main__content__call-to-action button:active {
+    filter: brightness(1.1);
+    transform: scale(.9);
+    background: linear-gradient(-45deg, #c19f70, #5f3f07);;
+}
+
+.main__content__call-to-action button.logIn__button--show-dialog {
+    background: linear-gradient(45deg, #074b5f, #70c1bf);
+    color: white;
+}
+
+.main__content__call-to-action button.logIn__button--show-dialog:active {
+    background: linear-gradient(45deg, #70c1bf, #074b5f);
+}
+
+/* FOOTER */
 
 footer {
-    background-color: green;
+    background-color: var(--footer--bg-color);
+    box-shadow: var(--footer--b-shadow);
     height: var(--footer--height);
     width: 100%;
     position: absolute;
     bottom: 0;
-    display: flex;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
     align-items: center;
     justify-content: space-around;
 }
 
+footer .footer-menu__options {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+footer .footer-menu__options button {
+    font-size: 1.6rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    background-color: transparent;
+    color: var(--nav--color);
+    border: none;
+    user-select: none;
+}
+
+footer .footer-menu__options button:active {
+    transform: scale(.9);
+    filter: brightness(1.5);
+}
+
+footer time {
+    font-size: 2.4rem;
+    padding-right: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    display: flex;
+    color: var(--nav--color);
+    filter: drop-shadow(2px 4px 8px #060694);
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+/* DIALOG */
+
+dialog {
+    width: 90%;
+    height: 80%;
+    margin: auto;
+    border: none;
+    background: none;
+    overflow: hidden;
+}
+
+dialog::backdrop {
+    background-color: #5524d279;
+}
+
+dialog .modal__content {
+    width: 100%;
+    height: 100%;
+    font-size: 3rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: cornsilk;
+    padding: 28px;
+    padding-top: 40px;
+    padding-right: var(--thumb-space);
+    border-radius: 25px;
+}
+
+dialog .modal__content__title {
+    background: var(--dialog__title--bg-color);
+    font-size: 8vw;
+    color: var(--dialog__title--color);
+    padding: 7px;
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 18px;
+}
+
+dialog .modal__content__description {
+    padding: 10px;
+    padding-top: 2px;
+    font-size: 2.6rem;
+    height: 85%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+dialog .modal__content__description h3 {
+    font-size: 1.1em;
+    font-family: monospace;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+dialog .modal__content__description h3:first-child {
+    margin-top: 0;
+}
+
+dialog .modal__content__description a {
+    word-break: break-all;
+    color: #0c5d96;
+    font-size: .8em;
+}
+
+dialog .modal__content__description .email--contact {
+    margin-top: 20px;
+    display: block;
+    font-size: .6em;
+    word-break: break-all;
+}
+
+dialog .modal__button--close {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    background-color: #fb7810;
+    color: #772e2e;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+/* DIALOG LOGIN */
+
+dialog .modal__content__description #form__signup,
+dialog .modal__content__description #form__login {
+    height: 80%;
+    border: 5px solid rgb(127, 85, 69);
+    border-radius: 25px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin-bottom: 15px;
+    background-color: #d594287a;
+    overflow: auto;
+}
+
+dialog .modal__content__description #form__login:focus-within {
+    background: linear-gradient(45deg, #2c2c60, #3838ff);
+    border-color: rgb(69 96 127);
+}
+
+dialog .modal__content__description #form__signup:focus-within {
+    background: linear-gradient(45deg, #2c604c, #7aff38);
+    border-color: rgb(77, 110, 101);
+}
+
+dialog .modal__content__description #form__signup:focus-within label {
+    color: #eee;
+}
+
+dialog .modal__content__description #form__login:focus-within label {
+    color: #ddd;
+}
+
+dialog .modal__content__description #form__signup .field__group,
+dialog .modal__content__description #form__login .field__group{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+dialog .modal__content__description #form__signup label,
+dialog .modal__content__description #form__login label {
+    font-size: 2.6rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: rgb(127, 85, 69);
+}
+
+dialog .modal__content__description #form__signup input,
+dialog .modal__content__description #form__login input {
+    border-radius: 25px;
+    border: none;
+    width: 100%;
+    height: 3rem;
+    font-size: 1.8rem;
+    padding-left: 1em;
+}
+
+dialog .modal__content__description #form__signup input:focus,
+dialog .modal__content__description #form__login input:focus {
+    outline: none;
+    border: 3px solid #0cebd2;
+}
+
+dialog .modal__content__description #form__signup input:focus {
+    border-color: #036724;
+}
+
+dialog .modal__content__description .button__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+dialog.signUp__modal .modal__content__description .button__container {
+    margin-top: 33px;
+}
+
+dialog .modal__content__description .button__container button {
+    font-size: 2.6rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #2c2c60, #3838ff);
+    color: white;
+    user-select: none;
+    transition: .3s all ease;
+}
+
+dialog.signUp__modal .modal__content__description .button__container button {
+    background: linear-gradient(45deg, #2c604c, #7aff38);
+}
+
+dialog .modal__content__description .button__container button:active {
+    background: linear-gradient(-45deg, #3838ff, #2c2c60);
+    filter: brightness(1.1);
+    transform: scale(.9);
+}
+
+dialog.signUp__modal .modal__content__description .button__container button:active {
+    background: linear-gradient(-45deg, #2c604c, #7aff38);
+}
+
+dialog .modal__content__description .form__error-box {
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    background-color: #ec4000;
+    color: #ffebeb;
+    display: none;
+    transition: .7s all ease;
+}
+
+dialog .modal__content__description .form__error-box.visible {
+    display: block;
+    overflow: auto;
+    min-height: 30%;
+}
+
+dialog .modal__content__description .form__error-box.visible > .errorlist {
+    padding-top: 10px;
+}
+
+dialog .modal__content__description .form__error-box.visible > .errorlist li {
+    padding-left: 1em;
+}
+
+dialog .modal__content__description .form__error-box.visible > .errorlist > li {
+    margin-bottom: 15px;
+}
+
+dialog .modal__content__description .form__error-box.visible > .errorlist > li .title__error {
+    background: #960d03;
+    padding: 5px;
+    border-radius: 15px;
+    display: block;
+    text-align: center;
+}
+
+
+dialog .modal__content__description .form__error-box.visible > .errorlist li > .errorlist {
+    /* padding-left: 1em; */
+    /* list-style: square; */
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+dialog .modal__content__description .form__error-box.visible > .errorlist li > .errorlist li {
+    list-style: disc;
+}
+
+/* POP-UP */
+.popup__message {
+    position: fixed;
+    top: 50%;
+    text-align: center;
+    background: white;
+    color: black;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 3rem;
+    font-family: verdana;
+    animation: popup__rising 3s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.popup__message.success-level {
+    background-color: rgba(36, 168, 3, 0.615);
+    color: #296d06;
+}
+
+.popup__message.info-level {
+    background-color: rgba(3, 102, 168, 0.615);
+    color: #211b80;
+}
+
+.popup__message.warning-level {
+    background-color: rgba(168, 141, 3, 0.615);
+    color: #6f6709;
+}
+
+.popup__message.error-level{
+    background-color: rgba(168, 72, 3, 0.615);
+    color: #631e17;
+}
+
+@keyframes popup__rising {
+    0% {
+        top: 50%;
+    }
+    80% {
+        opacity: .5;
+    }
+    90% {
+        opacity: .2;
+    }
+    100% {
+        top: -200px;
+        display: none;
+    }
+}

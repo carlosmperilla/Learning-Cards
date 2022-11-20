@@ -120,7 +120,6 @@ header #principal__menu {
     display: none;
     position: fixed;
     top: var(--header--height);
-    /* padding-top: var(--header--height); */
     width: 100%;
     height: 100vh;
     bottom: 0;
@@ -174,6 +173,84 @@ header #principal__menu ul li a {
 header #principal__menu ul li:active {
     background-color: var(--dropdown-menu--active);
 }
+
+/* HEADER MENU SUBMENU */
+header #principal__menu .kit-navbar__li,
+header #principal__menu .user-navbar__li {
+    background: linear-gradient(45deg, #947c04, #b8461a);
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    width: fit-content;
+    margin-left: 20px;
+    word-break: break-all;
+    user-select: none;
+    position: absolute;
+    top: 70px;
+}
+
+header #principal__menu .kit-navbar__li {
+    background: linear-gradient(45deg, #210494, #b8461a);
+    top: 230px;
+}
+
+header #principal__menu .kit-navbar__li:active,
+header #principal__menu .user-navbar__li:active {
+    background: linear-gradient(-45deg, #b8461a, #947c04);
+    filter: brightness(1.2);
+}
+
+header #principal__menu .kit-navbar__li:active {
+    background: linear-gradient(-45deg, #b8461a, #210494);
+}
+
+header #principal__menu .kit-navbar__li .kit-navbar__li--options,
+header #principal__menu .user-navbar__li .user-navbar__li--options {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 20px;
+    font-size: inherit;
+    width: max-content;
+    height: fit-content;
+}
+
+header #principal__menu .kit-navbar__li .kit-navbar__li--options {
+    width: calc(100vw - 40px - var(--thumb-space));
+    overflow: auto;
+    max-height: 200px;
+}
+
+header #principal__menu .kit-navbar__li .kit-navbar__li--options.visible,
+header #principal__menu .user-navbar__li .user-navbar__li--options.visible {
+    display: block;
+}
+
+header #principal__menu .kit-navbar__li .kit-navbar__li--options.visible > .kit__li,
+header #principal__menu .user-navbar__li .user-navbar__li--options.visible > .logout__li {
+    font-size: .7em;
+    word-break: normal;
+    margin-right: 0;
+    width: max-content;
+    background-color: #2f176b;
+    padding: 10px;
+}
+
+header #principal__menu .kit-navbar__li .kit-navbar__li--options.visible > .kit__li {
+    width: 100%;
+}
+
+header #principal__menu .kit-navbar__li .kit-navbar__li--options.visible > .kit__li a {
+    word-break: break-all;
+}
+
+header #principal__menu .kit-navbar__li .kit-navbar__li--options.visible > .kit__li:not(:last-child),
+header #principal__menu .user-navbar__li .user-navbar__li--options.visible > .logout__li:not(:last-child) {
+    border-bottom: 3px solid #4e4d7b;
+}
+
 
 /* MAIN */
 
@@ -538,6 +615,10 @@ dialog .modal__content__description .form__error-box.visible > .errorlist li > .
     font-family: verdana;
     animation: popup__rising 3s ease-in-out;
     animation-fill-mode: forwards;
+}
+
+.popup__message .popup__span {
+    font-weight: bold;
 }
 
 .popup__message.success-level {

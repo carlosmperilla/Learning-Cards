@@ -99,12 +99,22 @@ def logout_user(request):
     """
 
     logout(request)
-    info_message_text = """
-        Haz
-        <span class="popup__span">&nbsp;cerrado&nbsp;</span>
-        sesión
-        <span class="popup__span">&nbsp;correctamente</span>
-    """
+    
+    if request.GET.get('lang') == "es":
+        info_message_text = """
+            Haz
+            <span class="popup__span">&nbsp;cerrado&nbsp;</span>
+            sesión
+            <span class="popup__span">&nbsp;correctamente</span>
+        """
+    else:
+        info_message_text = """
+            You
+            <span class="popup__span">&nbsp;have&nbsp;</span>
+            successfully
+            <span class="popup__span">&nbsp;logged</span>
+            out
+        """
     messages.info(request, info_message_text)
 
     return redirect(request.GET.get('next'))

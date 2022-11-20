@@ -1,6 +1,7 @@
 const gadgetsButtonBox = document.querySelector(".gadgets__content");
 const translateButton = gadgetsButtonBox.querySelector("button");
 const langOptionsText = gadgetsButtonBox.querySelectorAll(".lang-option__text");
+const loginOutLik = document.querySelector(".logout__li a");
 
 function getCookie(name) {
     let cookieValue = null;
@@ -110,3 +111,13 @@ function setDefaultLanguage(){
 
 translateButton.addEventListener("click", changeLanguage);
 setDefaultLanguage();
+
+if (loginOutLik !== null) {
+    loginOutLik.addEventListener("click", (event) => {
+       if (localStorage.getItem('lc-lang') === "es"){
+           event.target.href = event.target.href.replace("lang=en", "lang=es");
+       } else {
+           event.target.href = event.target.href.replace("lang=es", "lang=en");
+       }
+    })
+}

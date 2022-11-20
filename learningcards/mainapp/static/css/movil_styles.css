@@ -120,10 +120,12 @@ header #principal__menu {
     display: none;
     position: fixed;
     top: var(--header--height);
+    /* padding-top: var(--header--height); */
     width: 100%;
+    height: 100vh;
     bottom: 0;
     background-color: var(--dropdown-menu);
-    z-index: 1;
+    scroll-behavior: smooth;
 }
 
 header #principal__menu ul {

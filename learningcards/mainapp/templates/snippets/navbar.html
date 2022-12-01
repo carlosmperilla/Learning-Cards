@@ -2,6 +2,16 @@
     <button class="icon-menu3"></button>
 </div>
 
+{% if request.user.is_authenticated %}
+    <div class="add-button__content">
+        <button class="icon-plus addKit__button--show-dialog dialog__button"></button>
+    </div>
+    <div class="sidebar-button__content">
+        <button class="icon-wrench"></button>
+    </div>
+{% endif %}
+
+
 <nav id="principal__menu">
     <ul>
         {% if not request.user.is_authenticated %}
@@ -30,7 +40,6 @@
                 <ul class="kit-navbar__li--options">
                     {% for kit in kits %}
                         <li class="kit__li">
-                            {% comment %} <a href="{% url 'stock_to_csv' stock.name %}">{{ card.name }}</a> {% endcomment %}
                             <a href="{% url 'kit:kit' kit.name %}">{{ kit.name }}</a>
                         </li>
                     {% empty %}

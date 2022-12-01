@@ -1,0 +1,26 @@
+<dialog class="modal signUp__modal">
+    <button class="modal__button--close">
+        X
+    </button>
+    <section class="modal__content">
+        <section class="modal__content__title">
+            Registrarse
+        </section>
+        <section class="modal__content__description">
+            <div class="form__error-box"></div>
+            <form id="form__signup" action="" method="post">
+                {% csrf_token %}
+                {% for field in signup_form %}
+                    <div class="field__group">
+                        <label for="{{ field.auto_id }}">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+            </form>
+            
+            <div class="button__container">
+                <button type="submit" form="form__signup" class="">Registrarse</button>
+            </div>
+        </section>
+    </section>
+</dialog>

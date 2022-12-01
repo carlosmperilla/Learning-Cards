@@ -20,6 +20,12 @@
     {% if not request.user.is_authenticated %}
         <script>const url_signup = "{% url 'signup' %}";</script>
         <script>const url_login = "{% url 'login' %}";</script>
-        <script src="{% static 'js/forms-func.js' %}"></script>
+        <script src="{% static 'js/forms-func.js' %}" async></script>
+    {% else %}
+        <script>const url_editKit = "{% url 'kit:edit_kits' %}";</script>
+        <script>const url_deleteKit = "{% url 'kit:delete_kits' %}";</script>
+        <script src="{% static 'js/add-kit.js' %}" async></script>
+        <script src="{% static 'js/edit-kits.js' %}" defer></script>
+        <script src="{% static 'js/delete-kits.js' %}" defer></script>
     {% endif %}
 {% endblock scripts %}

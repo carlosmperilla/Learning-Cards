@@ -10,16 +10,19 @@ function showDialog(event){
             dialogModal.showModal();
         }
     }
+    document.body.classList.add("modal-open");
 }
 
 function externalCloseDialog(event){
     if (event.target.tagName === "DIALOG") {
         event.target.close();
+        document.body.classList.remove("modal-open");
     }
 }
 
 function closeModal(event){
     event.target.parentElement.close()
+    document.body.classList.remove("modal-open");
 }
 
 function initialDialogEvents(){

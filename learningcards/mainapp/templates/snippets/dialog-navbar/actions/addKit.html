@@ -1,0 +1,37 @@
+<dialog class="modal addKit__modal">
+    <button class="modal__button--close">
+        X
+    </button>
+    <section class="modal__content">
+        <section class="modal__content__title">
+            Añadir Kit
+        </section>
+        <section class="modal__content__description">               
+            <section class="addKit__requirements">
+                <h4>Requisitos:</h4>
+                <ul>
+                    <li>Debe ser un archivo de texto.</li>
+                    <li>Cada línea debe contener, la palabra en el <strong>idioma a aprender</strong> y la palabra en el <strong>idioma nativo</strong> separado por <strong>:</strong></li>
+                    <li><h5>Ejemplo</h5>
+                        <ul>
+                            <li>Hello : Hola</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <form id="form__addKit" action="{% url 'add_kit' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in addKit__form %}
+                    <div class="field__group">
+                        <label for="{{ field.auto_id }}">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <input type="hidden" name="lc-lang">
+                <button class="addKit__final-button">Añadir</button>
+            </form>
+        
+        </section>
+    </section>
+</dialog>

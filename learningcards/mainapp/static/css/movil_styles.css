@@ -42,6 +42,10 @@ body {
     position: relative;
 }
 
+body.modal-open {
+    overflow: hidden;
+}
+
 p {
 	font-size: 1.6rem
 }
@@ -66,9 +70,11 @@ header {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    z-index: 1;
+    z-index: 2;
 }
 
+header .add-button__content,
+header .sidebar-button__content,
 header .burger-button__content,
 header .gadgets__content {
     height: 100%;
@@ -79,6 +85,8 @@ header .gadgets__content {
     position: relative;
 }
 
+header .add-button__content > button,
+header .sidebar-button__content > button,
 header .burger-button__content > button,
 header .gadgets__content > button {
     font-size: calc(var(--header--height) * .6);
@@ -87,6 +95,8 @@ header .gadgets__content > button {
     border: none;
 }
 
+header .add-button__content:active,
+header .sidebar-button__content--show,
 header .burger-button__content--show {
     background-color: var(--dropdown-menu);
 }
@@ -116,6 +126,7 @@ header .gadgets__content .lang-option__text.lang-option__text--selected {
     color: var(--header--bg-color);
 }
 
+#sidebar__menu,
 header #principal__menu {
     display: none;
     position: fixed;
@@ -127,6 +138,11 @@ header #principal__menu {
     scroll-behavior: smooth;
 }
 
+#sidebar__menu {
+    z-index: 3;
+}
+
+#sidebar__menu ul,
 header #principal__menu ul {
     width: 100%;
     height: 100%;
@@ -136,6 +152,7 @@ header #principal__menu ul {
     justify-content: space-evenly;
 }
 
+#sidebar__menu ul li,
 header #principal__menu ul li {
     width: calc(100% - var(--thumb-space));
     margin-right: var(--thumb-space);
@@ -151,6 +168,11 @@ header #principal__menu ul li {
     align-items: center;
 }
 
+#sidebar__menu ul li {
+    font-size: 3.5rem;
+}
+
+#sidebar__menu ul li button,
 header #principal__menu ul li button {
     background: transparent;
     width: 100%;
@@ -164,12 +186,18 @@ header #principal__menu ul li button {
     user-select: none;
 }
 
+#sidebar__menu ul li button {
+    font-size: 3.5rem;
+}
+
+
 header #principal__menu ul li a {
     display: block;
     width: 100%;
     height: 100%;
 }
 
+#sidebar__menu ul li:active,
 header #principal__menu ul li:active {
     background-color: var(--dropdown-menu--active);
 }
@@ -301,6 +329,185 @@ main .main__content .main__content__call-to-action {
 
 .main__content__call-to-action button.logIn__button--show-dialog:active {
     background: linear-gradient(45deg, #70c1bf, #074b5f);
+}
+
+/* MAIN POST LOGIN */
+.main__content__kits {
+    row-gap: 30px;
+    column-gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    width: 100%;
+    height: 100%;
+    place-content: center;
+}
+
+.main__content__kits.action-button-space {
+    height: 80%;
+    margin-top: 70px;
+}
+
+.kit__principal-button--add {
+    border-radius: 50%;
+    border: none;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(#00a7f7, #1b3131);
+    font-size: 40vW;
+    font-weight: bold;
+    font-family: Arial;
+    color: #0a2d3e;
+    margin: 0 auto;
+}
+
+.kit__principal-button--add:active {
+    transform: scale(.9);
+    filter: brightness(1.2);
+}
+
+.kit__content {
+    aspect-ratio: 2/3;
+    border: 6px dotted #8e7a2c;
+    border-radius: 75px;
+    display: grid;
+    grid-template-areas:
+        "head"
+        "main"
+        "footer";
+    grid-template-rows: 1fr 4fr 1fr;
+    contain: content;
+}
+
+.kit__content .kit__content__languages,
+.kit__content .kit__content__name {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    overscroll-behavior: contain;
+    text-align: center;
+    background-color: #decf94;
+    color: #804949;
+}
+
+.kit__content .kit__content__languages span,
+.kit__content .kit__content__name h3 {
+    width: 100%;
+    white-space: nowrap;
+    font-size: 3rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    overflow-x: auto;
+    padding-left: .5em;
+    padding-right: .5em;
+}
+
+.kit__content .kit__content__img{
+    background-color: #fff0b4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.kit__content .kit__content__img img {
+    max-width: 80%;
+    border: 7px solid #a79d75;
+}
+
+.kit__content .kit__content__languages span {
+    font-size: 2.6rem;
+    font-weight: normal;
+}
+
+.enter-kit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #555;
+    padding: 10px;
+    border-radius: 10px 0 0 0;
+    background: linear-gradient(
+25deg
+, #947c1e, #dfd6b0);
+    user-select: none;
+}
+
+.enter-kit:active {
+    -webkit-tap-highlight-color: transparent;
+    filter: brightness(1.2);
+    background: linear-gradient(
+        211deg
+        , #947c1e, #dfd6b0);
+}
+
+/* EDIT KIT */
+.kit__content .kit__content__name h3.kit-value--editable,
+.kit__content .kit__content__languages span.kit-value--editable {
+    background-color: #008200;
+    color: antiquewhite;
+}
+
+.kit__content .kit__content__name h3.kit-value--editable:focus,
+.kit__content .kit__content__languages span.kit-value--editable:focus {
+    filter: brightness(1.2);
+    outline: 2px solid orangered;
+}
+
+.kit__button--delete,
+.kit__button--edit {
+    position: fixed;
+    top: calc(var(--header--height) + 25px);
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    display: none;
+    font-size: 3rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    padding: 6px 15px;
+    width: fit-content;
+    border: none;
+    border-radius: 25px;
+    background: #98fb98a3;
+    color: #395251;
+    z-index: 1;
+}
+
+.kit__button--delete.visible,
+.kit__button--edit.visible {
+    display: block;
+}
+
+.kit__button--delete.visible:active,
+.kit__button--edit.visible:active {
+    transform: scale(.9);
+    filter: brightness(.8);
+}
+
+/* DELETE KIT */
+.kit__item--delete-content {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 30px;
+    height: 30px;
+    background: indianred;
+    border-radius: 10px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.kit__item--delete-content.visible {
+    display: flex;
+}
+
+.kit__button--delete {
+    background: #f30202a3;
+    color: #3c2828;
 }
 
 /* FOOTER */
@@ -441,6 +648,7 @@ dialog .modal__button--close {
 
 /* DIALOG LOGIN */
 
+.addKit__modal .modal__content__description #form__addKit,
 dialog .modal__content__description #form__signup,
 dialog .modal__content__description #form__login {
     height: 80%;
@@ -460,6 +668,11 @@ dialog .modal__content__description #form__login:focus-within {
     border-color: rgb(69 96 127);
 }
 
+.addKit__modal .modal__content__description #form__addKit:focus-within {
+    background: linear-gradient(45deg, #8787cf, #151581);
+    border-color: rgb(33, 46, 61);
+}
+
 dialog .modal__content__description #form__signup:focus-within {
     background: linear-gradient(45deg, #2c604c, #7aff38);
     border-color: rgb(77, 110, 101);
@@ -473,6 +686,11 @@ dialog .modal__content__description #form__login:focus-within label {
     color: #ddd;
 }
 
+dialog .modal__content__description #form__addKit:focus-within label {
+    color: #ccc;
+}
+
+dialog .modal__content__description #form__addKit .field__group,
 dialog .modal__content__description #form__signup .field__group,
 dialog .modal__content__description #form__login .field__group{
     display: flex;
@@ -481,6 +699,7 @@ dialog .modal__content__description #form__login .field__group{
     margin-bottom: 30px;
 }
 
+dialog .modal__content__description #form__addKit label,
 dialog .modal__content__description #form__signup label,
 dialog .modal__content__description #form__login label {
     font-size: 2.6rem;
@@ -489,6 +708,7 @@ dialog .modal__content__description #form__login label {
     color: rgb(127, 85, 69);
 }
 
+dialog .modal__content__description #form__addKit input,
 dialog .modal__content__description #form__signup input,
 dialog .modal__content__description #form__login input {
     border-radius: 25px;
@@ -499,6 +719,7 @@ dialog .modal__content__description #form__login input {
     padding-left: 1em;
 }
 
+dialog .modal__content__description #form__addKit input:focus,
 dialog .modal__content__description #form__signup input:focus,
 dialog .modal__content__description #form__login input:focus {
     outline: none;
@@ -602,6 +823,68 @@ dialog .modal__content__description .form__error-box.visible > .errorlist li > .
     list-style: disc;
 }
 
+dialog .modal__content__description p {
+    font-size: 2.2rem;
+}
+
+dialog .modal__content__description h4 {
+    font-size: 2rem;
+}
+
+dialog .modal__content__description ul {
+    color: black;
+    margin-left: 1em;
+}
+
+dialog .modal__content__description ul li {
+    color: black;
+    font-size: 2rem;
+    list-style: square;
+    display: list-item;
+}
+
+/* ADD KIT */
+.addKit__modal .modal__content__description .addKit__requirements {
+    height: 30%;
+}
+
+.addKit__modal .modal__content__description .addKit__requirements ul {
+    overflow: auto;
+    overscroll-behavior: contain;
+    height: 70%;
+    background: #b5b1a2;
+    border-radius: 25px;
+    padding: 5px 10px;
+    margin-top: 5px;
+    margin-left: 0;
+}
+
+.addKit__modal .modal__content__description .addKit__requirements ul li {
+    margin-left: 1.2em;
+}
+
+.addKit__modal .modal__content__description #form__addKit input[type="file"] {
+    display: none;
+}
+
+.addKit__modal .modal__content__description  .addKit__final-button {
+    width: fit-content;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #00a7f7, #1b3131);
+    color: #e0f2f9;
+}
+
+.addKit__modal .modal__content__description  .addKit__final-button:active {
+    transform: scale(.9);
+    filter: brightness(1.2);
+    background: linear-gradient(45deg, #1b3131, #00a7f7);
+}
+
 /* POP-UP */
 .popup__message {
     position: fixed;
@@ -612,9 +895,10 @@ dialog .modal__content__description .form__error-box.visible > .errorlist li > .
     width: 100%;
     padding: 10px 0;
     font-size: 3rem;
-    font-family: verdana;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     animation: popup__rising 3s ease-in-out;
     animation-fill-mode: forwards;
+    z-index: 1;
 }
 
 .popup__message .popup__span {

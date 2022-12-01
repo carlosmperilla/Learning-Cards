@@ -2,6 +2,16 @@
     <button class="icon-menu3"></button>
 </div>
 
+{% if request.user.is_authenticated %}
+    <div class="add-button__content">
+        <button class="icon-plus addKit__button--show-dialog dialog__button"></button>
+    </div>
+    <div class="sidebar-button__content">
+        <button class="icon-wrench"></button>
+    </div>
+{% endif %}
+
+
 <nav id="principal__menu">
     <ul>
         {% if not request.user.is_authenticated %}
@@ -17,7 +27,27 @@
             </li>
         {% else %}
             <li class="user-navbar__li">
-                <a href="{% url 'logout' %}?next={% url 'index' %}">Salir</a>
+                <span class="icon-user"></span>&nbsp;
+                <span class="{% if request.user.username == "Invitados" %}username__guests{% endif %}">{{ user.username }}</span>
+                <ul class="user-navbar__li--options">
+                    <li class="logout__li">
+                        <a href="{% url 'logout' %}?next={% url 'index' %}&lang=es">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="kit-navbar__li">
+                <span class="icon-stack"></span>&nbsp;Kits
+                <ul class="kit-navbar__li--options">
+                    {% for kit in kits %}
+                        <li class="kit__li">
+                            <a href="{% url 'kit:kit' kit.name %}">{{ kit.name }}</a>
+                        </li>
+                    {% empty %}
+                        <li class="kit__li kit__li--without-cards">
+                            Sin kits de aprendizaje por el momento
+                        </li>
+                    {% endfor %}
+                </ul>
             </li>
         {% endif %}
     </ul>

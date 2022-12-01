@@ -4,7 +4,7 @@ from . import views
 
 app_name = "kit"
 urlpatterns = [
-    # path("signup/", views.singup_user, name="signup"),
-    # path("login/", views.login_user, name="login"),
-    # path("logout/", views.logout_user, name="logout"),
+    path("cards/<str:kit_name>/", views.kit, name="kit"),
+    path("action/edit", views.edit_kits, name="edit_kits"),
+    path("action/delete", views.delete_kits, name="delete_kits"),
 ]

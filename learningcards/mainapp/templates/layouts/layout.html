@@ -34,15 +34,16 @@
             {% block content %}
             {% endblock content %}
         </main>
+        {% if request.user.is_authenticated %}
+            <sidebar id="sidebar__menu">
+                {% include 'snippets/content_sidebar.html' %}
+            </sidebar>
+        {% endif %}
         <footer>
             {% include 'snippets/content_footer.html' %}
         </footer>
         {% include 'snippets/dialog-box.html' %}
-        {% comment %} <section class="modal modal__contactMe">
-            {% include 'mainapp/modals/modal_contactMe.html' %}
-        </section> {% endcomment %}
     </body>
-    {% comment %} <script src="{% static '/js/interactive-icons.js' %}" rel="preload" as="script" async></script> {% endcomment %}
     
     <script src={% static 'js/mobile-func.js' %} rel="preload" as="script" async></script>
     <script src={% static 'js/dialog-func.js' %} rel="preload" as="script" async></script>

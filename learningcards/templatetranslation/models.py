@@ -19,6 +19,7 @@ class ElementTranslation(models.Model):
     selector = models.CharField(max_length=150, verbose_name="Selector CSS")
     spanish_text = models.CharField(max_length=1500, verbose_name="Texto en español")
     english_text = models.CharField(max_length=1500, verbose_name="Texto en inglés")
+    multiple = models.BooleanField(default=False, verbose_name="¿Hay que modificar multiples elementos?")
     templatetranslation = models.ManyToManyField('templatetranslation.TemplateTranslation', editable=True, verbose_name='Traducción de template', related_name="elementstranslation")
 
     class Meta:

@@ -1,0 +1,30 @@
+<button class="kit__button--edit"><span class="icon-pencil"></span> Editar</button>
+<button class="kit__button--delete"><span class="icon-bin"></span> Eliminar</button>
+<section class="main__content__kits">
+    {% for kit in kits %}
+        <article class="kit__content" id="kit-{{ kit.id }}">
+            <div class="kit__content__name">
+                <h3>{{ kit.name }}</h3>
+            </div>
+            <div class="kit__content__img">
+                <div class="kit__item--delete-content">
+                    <input type="checkbox">
+                </div>
+                <img src="{{ kit.img }}" alt="{{ kit.name }}" loading="lazy">
+                <a class="enter-kit" href="{% url 'kit:kit' kit.name %}">
+                    Ingresar&nbsp;<span class="icon-arrow-up-right2"></span>
+                </a>
+            </div>
+            <div class="kit__content__languages">
+                <span>
+                    <span class="kit__content__languages--foreign">{{ kit.foreign_language }}</span>
+                     ➔ 
+                    <span class="kit__content__languages--native">{{ kit.native_language }}</span>
+                </span>
+            </div>
+        </article>
+    {% empty %}
+        <button class="kit__principal-button--add" title="Añadir Kit/Add Kit" onclick="document.querySelector('.addKit__modal').showModal()">+</button>
+    {% endfor %}
+
+</section>

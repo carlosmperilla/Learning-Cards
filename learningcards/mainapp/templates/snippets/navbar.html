@@ -2,12 +2,21 @@
     <button class="icon-menu3"></button>
 </div>
 
-{% if request.user.is_authenticated %}
+{% if request.user.is_authenticated and is_index %}
     <div class="add-button__content">
         <button class="icon-plus addKit__button--show-dialog dialog__button"></button>
     </div>
     <div class="sidebar-button__content">
         <button class="icon-wrench"></button>
+    </div>
+{% endif %}
+
+{% if is_kit %}
+    <div class="home__content">
+        <a class="icon-home3" href="{% url 'index' %}"></a>
+    </div>
+    <div class="randomize-button__content">
+        <button class="icon-shuffle"></button>
     </div>
 {% endif %}
 

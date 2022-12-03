@@ -1,14 +1,17 @@
 import json
 
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect
-from django.http import HttpResponse, JsonResponse
+from django.shortcuts import get_object_or_404, redirect, render
+from django.http import JsonResponse
 from django.contrib import messages
 from django.db import transaction
 from django.urls import reverse
 
 from .models import Kit
 from .forms import AddKit
+from card.forms import ValidateForeignWord
+
+from mainapp.threading_requests_parse_utils import threading_get_imgs
 
 # Create your views here.
 @login_required
@@ -24,26 +27,21 @@ def kit(request, kit_name):
         'kits' : kits,
         'kit' : kit_by_name,
         'cards' : cards_by_kit,
-        'mode' : 0
+        'title': kit_by_name.name,
+        'is_kit' : True,
+        'validateWord__form' : ValidateForeignWord(auto_id=None),
     }
 
-    if request.GET.get("mode"):
-        pass
-        # context["mode"] = int(request.GET.get("mode"))
+    if cards_by_kit:
+        threading_get_imgs(cards_by_kit, 'foreign_word')
 
-        # if context["mode"] == 1:
-        #     context['form_import_images'] = ImportImages()
-
-    # return render(request, "stock/stock.html", context)
-    return HttpResponse(kit_by_name.name)
+    return render(request, 'kit/kit.html', context)
 
 @login_required
 def add_kit(request):
 
     if request.method == "POST":
         message_error = None
-        print(request.POST.get('kit_file'))
-        print(request.FILES)
         add_kit_form = AddKit(request.POST, request.FILES)
         if add_kit_form.is_valid():
             kit = Kit(

@@ -73,6 +73,8 @@ header {
     z-index: 2;
 }
 
+header .randomize-button__content,
+header .home__content,
 header .add-button__content,
 header .sidebar-button__content,
 header .burger-button__content,
@@ -85,6 +87,12 @@ header .gadgets__content {
     position: relative;
 }
 
+header .home__content {
+    margin-right: auto;
+}
+
+header .home__content > a,
+header .randomize-button__content > button,
 header .add-button__content > button,
 header .sidebar-button__content > button,
 header .burger-button__content > button,
@@ -95,11 +103,18 @@ header .gadgets__content > button {
     border: none;
 }
 
+header .randomize-button__content:active,
+header .home__content:active,
 header .add-button__content:active,
 header .sidebar-button__content--show,
 header .burger-button__content--show {
     background-color: var(--dropdown-menu);
 }
+
+header .home__content:active {
+    -webkit-tap-highlight-color: transparent;
+}
+
 
 header .gadgets__content .lang-option__text {
     position: absolute;
@@ -296,6 +311,10 @@ main .main__content {
     align-items: center;
 }
 
+main .main__content.main__content__kit {
+    display: block;
+}
+
 main .main__content .main__content__call-to-action {
     height: 100%;
     display: flex;
@@ -378,6 +397,18 @@ main .main__content .main__content__call-to-action {
     contain: content;
 }
 
+.kit__content .kit__content__name {
+    grid-area: head;
+}
+
+.kit__content .kit__content__img {
+    grid-area: main;
+}
+
+.kit__content .kit__content__languages {
+    grid-area: footer;
+}
+
 .kit__content .kit__content__languages,
 .kit__content .kit__content__name {
     display: flex;
@@ -442,6 +473,249 @@ main .main__content .main__content__call-to-action {
         211deg
         , #947c1e, #dfd6b0);
 }
+
+/* MAIN KIT */
+.main__content__kit .kit__info {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    text-align: left;
+    font-size: 2.2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    word-break: break-all;
+    row-gap: 10px;
+    color: slategrey;
+}
+
+.main__content__kit .kit__info span {
+    text-align: center;
+}
+
+.main__content__kit .kit__info .kit__info__progress {
+    word-break: normal;
+    white-space: break-spaces;
+}
+
+.main__content__kit .kit-empty {
+    font-size: 5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: brown;
+    margin: 0 auto;
+    top: 50%;
+    text-align: center;
+    margin-top: 100px;
+}
+
+
+/* MAIN CARDS CONTENT */
+.main__content__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    row-gap: 30px;
+    column-gap: 20px;
+    margin-top: 35px;
+}
+
+.main__content__cards .card__content {
+    aspect-ratio: 2/3;
+    border: 6px solid black;
+    border-radius: 75px;
+    display: grid;
+    grid-template-areas:
+        "foreign_word"
+        "principal_img"
+        "score"
+        "input_native_word";
+    grid-template-rows: 1fr 2fr 1fr 1fr;
+    contain: content;
+    background-color: lightblue;
+}
+
+.main__content__cards .card__content .card__content__foreign-word {
+    grid-area: foreign_word;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: center;
+    background-color: #9498de;
+    color: #494b80;
+    border-bottom: 4px solid black;
+}
+
+.main__content__cards .card__content .card__content__foreign-word h3 {
+    width: 100%;
+    white-space: nowrap;
+    font-size: 3rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    text-transform: capitalize;
+    text-align: center;
+    overflow-x: auto;
+    padding-left: .5em;
+    padding-right: .5em;
+}
+
+.main__content__cards .card__content .card__content__foreign-word button {
+    height: 100%;
+    border-radius: 0 25px 0 0;
+    background: linear-gradient(
+340deg
+, #5559a0, #9498de);
+    color: antiquewhite;
+    font-size: 4rem;
+    text-align: left;
+    padding-left: .3em;
+    border: none;
+    border-left: 3px solid black;
+}
+
+.main__content__cards .card__content .card__content__foreign-word button:active {
+    background: linear-gradient(
+        175deg
+        , #5559a0, #9498de);
+    filter: brightness(1.2);
+}
+
+.main__content__cards .card__content__img {
+    grid-area: principal_img;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.main__content__cards .card__content__img img {
+    max-width: 60%;
+    border: 7px solid #393d80;
+    
+}
+
+.main__content__cards .card__content__img .card--renew-img {
+    position: absolute;
+    right: 0;
+    width: 20%;
+    aspect-ratio: 1/1;
+    border-radius: 25px 0 0 25px;
+    border: 3px solid black;
+    border-right: 0;
+    background: linear-gradient(
+45deg
+, #5559a0, #9498de);
+    color: #30315a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__content__cards .card__content__img .card--renew-img > span {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.main__content__cards .card__content__img .card--renew-img:active {
+    filter: brightness(1.2);
+    background: linear-gradient(
+        170deg
+        , #5559a0, #9498de);
+}
+
+.main__content__cards .card__content__img .card--renew-img:active > span {
+    animation-name: spin;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+}
+
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+
+.main__content__cards .card__content .card__content__score {
+    grid-area: score;
+    background-color: #9498de;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 4px solid black;
+}
+
+.main__content__cards .card__content .card__content__score .card__content__score--mistakes,
+.main__content__cards .card__content .card__content__score .card__content__score--hits {
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+}
+
+.main__content__cards .card__content .card__content__score .card__content__score--hits .card__content__score--hits-text,
+.main__content__cards .card__content .card__content__score .card__content__score--mistakes .card__content__score--mistakes-text {
+    background-color: #5559a0;
+    border-bottom: 2px solid black;
+    color: #c7c9f1;
+    text-align: center;
+    font-size: 2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+.main__content__cards .card__content .card__content__score .card__content__score--hits .card__content__score--hits-value,
+.main__content__cards .card__content .card__content__score .card__content__score--hits .card__content__score--hits-text {
+    border-right: 2px solid black;
+}
+
+.main__content__cards .card__content .card__content__score .card__content__score--hits .card__content__score--hits-value,
+.main__content__cards .card__content .card__content__score .card__content__score--mistakes .card__content__score--mistakes-value {
+    font-size: 4rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    overflow-x: auto;
+}
+
+.main__content__cards .card__content .card__content__score .card__content__score--hits .card__content__score--hits-value span,
+.main__content__cards .card__content .card__content__score .card__content__score--mistakes .card__content__score--mistakes-value span {
+    margin: auto;
+}
+
+.main__content__cards .card__content .card__content__check {
+    grid-area: input_native_word;
+    border-top: 4px solid black;
+}
+
+.main__content__cards .card__content .card__content__check .form__validate-word {
+    display: grid;
+    grid-template-columns: 8fr 3fr;
+    height: 100%;
+}
+
+.main__content__cards .card__content .card__content__check .form__validate-word input {
+    padding-left: 1em;
+    font-size: 4rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #fff5cd;
+    color: #734040;
+    width: 100%;
+}
+
+.main__content__cards .card__content .card__content__check .form__validate-word button {
+    font-size: 5rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    padding-left: .1em;
+    background-color: #5559a0;
+    color: #d8d9f1;
+    border: none;
+}
+
+.main__content__cards .card__content .card__content__check .form__validate-word button:active {
+    filter: brightness(1.2);
+}
+
 
 /* EDIT KIT */
 .kit__content .kit__content__name h3.kit-value--editable,

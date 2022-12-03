@@ -1,0 +1,72 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block content %}
+    <section class="main__content main__content__kit">
+        <section class="kit__info">
+            <h2 class="title__languages">{{ kit.name }} </h2>
+            <span>
+                {{ kit.foreign_language }} → {{ kit.native_language }}
+            </span>
+            <h3 class="kit__info__progress">Progreso de 0-100</h3>
+            <span>{{ kit.successful }}</span>
+        </section>
+        <section class="main__content__cards">
+            {% for card in cards %}
+                <article class="card__content" id="card-{{ card.id }}">
+                    <div class="card__content__foreign-word">
+                        <h3>
+                            {{ card.foreign_word }}
+                        </h3>
+                        <button class="icon-eye">
+
+                        </button>
+                    </div>
+                    <div class="card__content__img">
+                        <div class="correco o incorrecto"></div>
+                        <button class="card--renew-img">
+                            <span class="icon-loop2"></span>
+                        </button>
+                        <img src="{{ card.img }}" alt="{{ card.foreign_word }}" loading="lazy">
+                    </div>
+                    <div class="card__content__score">
+                        <span class="card__content__score--hits">
+                            <span class="card__content__score--hits-text">Aciertos</span>
+                            <span class="card__content__score--hits-value">
+                                <span>{{ card.hits }}</span>
+                            </span>
+                        </span>
+                        <span class="card__content__score--mistakes">
+                            <span class="card__content__score--mistakes-text">Errores</span>
+                            <span class="card__content__score--mistakes-value">
+                                <span>{{ card.mistakes }}</span>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="card__content__check">
+                        <form class="form__validate-word">
+                            {% for field in validateWord__form %}
+                                    {{ field }}
+                            {% endfor %}
+                            <input type="hidden" name="lc-lang">
+                            <button class="validate-word__final-button icon-compass"></button>
+                        </form>
+                    </div>
+                </article>
+            {% empty %}
+                <p class="kit-empty">Kit vacio</p>
+            {% endfor %}
+        </section>
+    </section>
+{% endblock content %}
+
+{% block scripts %}
+    <script>const url_template_translation = "{% url 'templatetranslation:get_translate' request.resolver_match.url_name %}";</script>
+        {% comment %} <script src="{% static 'js/forms-func.js' %}" async></script> {% endcomment %}
+        {% comment %} <script>const url_deleteKit = "{% url 'kit:delete_kits' %}";</script> {% endcomment %}
+        {% comment %} <script src="{% static 'js/delete-kits.js' %}" defer></script> {% endcomment %}
+{% endblock scripts %}

@@ -7,4 +7,5 @@ urlpatterns = [
     path("cards/<str:kit_name>/", views.kit, name="kit"),
     path("action/edit", views.edit_kits, name="edit_kits"),
     path("action/delete", views.delete_kits, name="delete_kits"),
+    path("action/randomize_kit/<str:kit_name>", views.randomize_kit, name="randomize_kit"),
 ]

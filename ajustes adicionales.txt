@@ -1,0 +1,3 @@
+* Uso de rest-api, puede ser para carga de datos.
+* Uso de google-captcha. Tanto en inicio de sesión, como en el registro.
+* email para confirmar registro.

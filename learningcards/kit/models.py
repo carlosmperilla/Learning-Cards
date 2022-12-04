@@ -1,5 +1,6 @@
 
 import string
+from statistics import mean
 
 from django.contrib.auth.models import User
 
@@ -28,11 +29,16 @@ class Kit(models.Model):
     def generate_cards(self, kit_file):
         cards = []
         for line in kit_file.readlines():
-            if line.decode('utf-8') in string.whitespace:
+            clean_line = line.strip()
+            if clean_line.decode('utf-8') in string.whitespace:
                 continue
-            words = line.decode('utf-8').split(':')[:2]
+            words = clean_line.decode('utf-8').split(':')[:2]
             foreign_word = words[0].strip()
             native_word = words[1].strip()
             cards.append(Card(foreign_word = foreign_word, native_word = native_word, kit=self))
         kit_file.close()
         Card.objects.bulk_create(cards)
+
+    def put_successful(self):
+        self.successful = round(mean(success_value[0] for success_value in self.cards.values_list('success')))
+        self.save(update_fields=['successful'])

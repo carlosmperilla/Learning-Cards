@@ -2,17 +2,16 @@ from django.shortcuts import render
 from users.forms import SignUpForm, LoginForm
 
 from kit.models import Kit
-from kit.forms import AddKitTwo
+from kit.forms import AddKit
 
-import requests
-from bs4 import BeautifulSoup as bs 
-from random import randint
+from .threading_requests_parse_utils import threading_get_imgs
 
 # Create your views here.
 def index(request):
 
     context = {
         'title' : 'Inicio',
+        'is_index': True,
     }
 
     if not request.user.is_authenticated:
@@ -20,14 +19,9 @@ def index(request):
         context['login_form'] = LoginForm
     else:
         context['kits'] = Kit.objects.filter(user__pk=request.user.pk)
-        context['addKit__form'] = AddKitTwo
+        context['addKit__form'] = AddKit
 
     if context.get('kits'):
-        for kit in context['kits']:
-            url_kit_name = requests.utils.quote(kit.name)
-            url_g_img = f"https://www.google.com/search?q={url_kit_name}&tbm=isch&tbs=isz:l"
-            g_req = requests.get(url_g_img)
-            g_parser = bs(g_req.content, 'html.parser')
-            kit.img = g_parser.findAll("img")[randint(1,20)]["src"]
+        threading_get_imgs(context['kits'], 'name')
 
     return render(request, 'mainapp/index.html', context)

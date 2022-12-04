@@ -20,6 +20,7 @@ from django.conf import settings
 from django.views.static import serve
 
 urlpatterns = [
+    path('card/', include('card.urls')),
     path('kit/', include('kit.urls')),
     path('', include('templatetranslation.urls')),
     path('', include('mainapp.urls')),

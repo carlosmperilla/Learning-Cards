@@ -13,8 +13,22 @@
                 {{ kit.foreign_language }} → {{ kit.native_language }}
             </span>
             <h3 class="kit__info__progress">Progreso de 0-100</h3>
-            <span>{{ kit.successful }}</span>
+            <span class="kit__info__progress--value">{{ kit.successful }}</span>
         </section>
+
+        <section class="kit__pagination--input-page">
+            <span>N° Página:&nbsp;</span>
+            <input type="number" list="kit-pages__datalist" min="1" max="{{ total_pages }}">
+        </section>
+        <section class="kit__pagination">
+            {% if has_previous_page %}
+                <a href="{% url 'kit:kit' kit.name %}?page={{ request.GET.page | add:"-1" }}" class="kit__pagination--row kit__pagination--prev-page">❮</a>
+            {% endif %}
+            {% if has_next_page %}
+                <a href="{% url 'kit:kit' kit.name %}?page={{ request.GET.page | default:"1" | add:"1" }}" class="kit__pagination--row kit__pagination--next-page">❯</a>
+            {% endif %}
+        </section>
+
         <section class="main__content__cards">
             {% for card in cards %}
                 <article class="card__content" id="card-{{ card.id }}">
@@ -27,7 +41,7 @@
                         </button>
                     </div>
                     <div class="card__content__img">
-                        <div class="correco o incorrecto"></div>
+                        <div class="card__state icon-wondering2"></div>
                         <button class="card--renew-img">
                             <span class="icon-loop2"></span>
                         </button>
@@ -61,12 +75,35 @@
                 <p class="kit-empty">Kit vacio</p>
             {% endfor %}
         </section>
+
+        <section class="kit__pagination--input-page">
+            <span>N° Página:&nbsp;</span>
+            <input type="number" list="kit-pages__datalist" min="1" max="{{ total_pages }}">
+        </section>
+        <section class="kit__pagination">
+            {% if has_previous_page %}
+                <a href="{% url 'kit:kit' kit.name %}?page={{ request.GET.page | add:"-1" }}" class="kit__pagination--prev-page">❮</a>
+            {% endif %}
+            {% if has_next_page %}
+                <a href="{% url 'kit:kit' kit.name %}?page={{ request.GET.page | default:"1" | add:"1" }}" class="kit__pagination--next-page">❯</a>
+            {% endif %}
+        </section>
+
+        <datalist id="kit-pages__datalist"></datalist>
     </section>
 {% endblock content %}
 
 {% block scripts %}
     <script>const url_template_translation = "{% url 'templatetranslation:get_translate' request.resolver_match.url_name %}";</script>
-        {% comment %} <script src="{% static 'js/forms-func.js' %}" async></script> {% endcomment %}
-        {% comment %} <script>const url_deleteKit = "{% url 'kit:delete_kits' %}";</script> {% endcomment %}
-        {% comment %} <script src="{% static 'js/delete-kits.js' %}" defer></script> {% endcomment %}
+    <script>
+        const url_showNativeWord = "{% url 'card:show_native_word' kit.name %}";
+        const url_replaceImg = "{% url 'card:replace_img' kit.name %}";
+        const url_validateWord = "{% url 'card:check_answer' kit.name %}";
+        const url_randomizeKit = "{% url 'kit:randomize_kit' kit.name %}";
+        {% comment %} history.pushState(null, '', '?page=3'); {% endcomment %}
+
+        const numPages = {{ total_pages }};
+    </script>
+    <script src="{% static 'js/cards-actions.js' %}" async></script>
+    <script src="{% static 'js/paginator-interactive.js' %}" async></script>
 {% endblock scripts %}

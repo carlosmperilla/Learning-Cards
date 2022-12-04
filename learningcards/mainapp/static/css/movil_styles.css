@@ -540,6 +540,7 @@ main .main__content .main__content__call-to-action {
     background-color: #9498de;
     color: #494b80;
     border-bottom: 4px solid black;
+    user-select: none;
 }
 
 .main__content__cards .card__content .card__content__foreign-word h3 {
@@ -633,6 +634,37 @@ main .main__content .main__content__call-to-action {
     to {
       transform: rotate(360deg);
     }
+}
+
+.main__content__cards .card__content__img .card__state {
+    position: absolute;
+    left: 3%;
+    width: fit-content;
+    aspect-ratio: 1/1;
+    font-size: 3rem;
+    font-weight: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5559a0;
+    color: #9dbad9;
+    border-radius: 50%;
+    border: 3px solid #9dbad9;
+}
+
+.main__content__cards .card__content__img .card__state.success,
+.main__content__cards .card__content__img .card__state.fail {
+    background-color: black;
+    border-color: black;
+}
+
+
+.main__content__cards .card__content__img .card__state.success {
+    color: lightgreen;
+}
+
+.main__content__cards .card__content__img .card__state.fail {
+    color: #ea3f3f;
 }
 
 .main__content__cards .card__content .card__content__score {
@@ -783,6 +815,70 @@ main .main__content .main__content__call-to-action {
     background: #f30202a3;
     color: #3c2828;
 }
+
+/* KIT PAGINATION */
+.kit__pagination {
+    width: 100%;
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px auto;
+}
+
+.kit__pagination a {
+    border: 2px solid #777;
+    border-radius: 15px;
+    color: #777;
+    padding: 8px 0;
+    aspect-ratio: 1/1;
+    transition: background-color .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+}
+
+.kit__pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+  
+.kit__pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.kit__pagination .kit__pagination--prev-page {
+    order: -1;
+}
+
+.kit__pagination .kit__pagination--next-page {
+    order: 1;
+}
+
+.kit__pagination--input-page {
+    margin-top: 30px;
+}
+
+.kit__pagination--input-page span {
+    font-size: 2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: #555;
+}
+
+.kit__pagination--input-page input {
+    border: 1px solid slategray;
+    font-size: 1.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: normal;
+    width: 60px;
+}
+
+
 
 /* FOOTER */
 

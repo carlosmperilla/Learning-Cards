@@ -19,6 +19,9 @@ class Card(models.Model):
         return self.foreign_word + ' - ' + self.native_word + ' - ' + str(self.pk)
 
     def put_success(self):
+        """
+            Calculate and update the value of success. And the new value of hits or mistakes.
+        """
         new_success = (self.hits/(self.hits+self.mistakes))
         self.success = int(new_success*100)
         self.save(update_fields=['hits', 'mistakes', 'success'])

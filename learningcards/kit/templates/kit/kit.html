@@ -20,14 +20,8 @@
             <span>N° Página:&nbsp;</span>
             <input type="number" list="kit-pages__datalist" min="1" max="{{ total_pages }}">
         </section>
-        <section class="kit__pagination">
-            {% if has_previous_page %}
-                <a href="{% url 'kit:kit' kit.name %}?page={{ request.GET.page | add:"-1" }}" class="kit__pagination--row kit__pagination--prev-page">❮</a>
-            {% endif %}
-            {% if has_next_page %}
-                <a href="{% url 'kit:kit' kit.name %}?page={{ request.GET.page | default:"1" | add:"1" }}" class="kit__pagination--row kit__pagination--next-page">❯</a>
-            {% endif %}
-        </section>
+
+        {% include 'kit/snippets/pagination.html' %}
 
         <section class="main__content__cards">
             {% for card in cards %}
@@ -80,14 +74,8 @@
             <span>N° Página:&nbsp;</span>
             <input type="number" list="kit-pages__datalist" min="1" max="{{ total_pages }}">
         </section>
-        <section class="kit__pagination">
-            {% if has_previous_page %}
-                <a href="{% url 'kit:kit' kit.name %}?page={{ request.GET.page | add:"-1" }}" class="kit__pagination--prev-page">❮</a>
-            {% endif %}
-            {% if has_next_page %}
-                <a href="{% url 'kit:kit' kit.name %}?page={{ request.GET.page | default:"1" | add:"1" }}" class="kit__pagination--next-page">❯</a>
-            {% endif %}
-        </section>
+
+        {% include 'kit/snippets/pagination.html' %}
 
         <datalist id="kit-pages__datalist"></datalist>
     </section>
@@ -100,7 +88,6 @@
         const url_replaceImg = "{% url 'card:replace_img' kit.name %}";
         const url_validateWord = "{% url 'card:check_answer' kit.name %}";
         const url_randomizeKit = "{% url 'kit:randomize_kit' kit.name %}";
-        {% comment %} history.pushState(null, '', '?page=3'); {% endcomment %}
 
         const numPages = {{ total_pages }};
     </script>

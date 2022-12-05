@@ -31,3 +31,13 @@ class AddKit(ModelForm):
                 raise ValidationError(f"El vocabulario es demasiado extenso.")
             
         return data
+
+class EditKit(ModelForm):
+    class Meta:
+        model = Kit
+        fields = ('name', 'foreign_language', 'native_language')
+
+    def __init__(self, *args, **kwargs):
+        super(EditKit, self).__init__(*args, **kwargs)
+        for key, field in self.fields.items():
+            self.fields[key].required = False

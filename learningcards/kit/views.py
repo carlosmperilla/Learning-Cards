@@ -1,24 +1,25 @@
 import json
+import random
 
+from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import JsonResponse, HttpResponseNotFound
 from django.contrib import messages
 from django.db import transaction
 from django.urls import reverse
+from django.core.paginator import Paginator
 
 from .models import Kit
-from .forms import AddKit
+from .forms import AddKit, EditKit
 from card.forms import ValidateForeignWord
 
 from mainapp.threading_requests_parse_utils import threading_get_imgs
-import random
 
-from django.core.paginator import Paginator
 
 # Create your views here.
 @login_required
-def kit(request, kit_name):
+def kit(request, kit_name : str):
     """
         Render the kit in template.
     """
@@ -64,7 +65,6 @@ def kit(request, kit_name):
             'kits' : kits,
             'kit' : kit_by_name,
             'cards' : l_cards_page,
-            # 'current_page' : page_num,
             'has_previous_page' : cards_page.has_previous(),
             'has_next_page' : cards_page.has_next(),
             'total_pages' : cards_paginator.num_pages,
@@ -77,7 +77,10 @@ def kit(request, kit_name):
 
 
 @login_required
-def randomize_kit(request, kit_name):
+def randomize_kit(request, kit_name : str):
+    """
+        Reassigns the seed for card shuffling.
+    """
     kits = Kit.objects.filter(user__pk=request.user.pk)
     kit_by_name = get_object_or_404(kits, name=kit_name)
     kit_by_name_key = str(kit_by_name)
@@ -89,6 +92,9 @@ def randomize_kit(request, kit_name):
 
 @login_required
 def add_kit(request):
+    """
+        Validate and add a kit.
+    """
 
     if request.method == "POST":
         message_error = None
@@ -133,8 +139,12 @@ def add_kit(request):
 
 @login_required
 def edit_kits(request):
+    """
+        Edit the name, foreign language, and native language of one or more kits.
+    """
 
     if request.method == "POST":
+        editable_fields = ['foreign_language', 'native_language', 'name']
         data = {"redirect_url" : reverse('index')}
         kits_by_user = Kit.objects.filter(user__pk=request.user.pk)
         edited_kits_data = json.loads(request.body)
@@ -143,7 +153,12 @@ def edit_kits(request):
             for id, edited_fields in edited_kits_data.items():
                 try:
                     kit = kits_by_user.filter(id=int(id.replace("kit-", "")))
-                    kit.update(**edited_fields)
+                    valid_edited_fields = {key:value for key, value in edited_fields.items() if key in editable_fields}
+                    form = EditKit(valid_edited_fields)
+                    if form.is_valid():
+                        kit.update(**valid_edited_fields)
+                    else:
+                        raise ValidationError('Edición no valida')
                 except Exception as e:
                     print(e)
                     import traceback
@@ -164,6 +179,10 @@ def edit_kits(request):
 
 @login_required
 def delete_kits(request):
+    """
+        Delete one to several kits.
+    """
+
     if request.method == "POST":
         data = {"redirect_url" : reverse('index')}
         kits_by_user = Kit.objects.filter(user__pk=request.user.pk)

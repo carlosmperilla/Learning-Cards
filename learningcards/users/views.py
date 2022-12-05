@@ -1,12 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.urls import reverse
-from django.http import HttpResponse, JsonResponse
-from django.contrib.auth import authenticate, login, logout
+from django.http import JsonResponse
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from .forms import LoginForm, SignUpForm
-# from django.utils.translation import gettext
 from django.utils import translation
 
 # Create your views here.
@@ -48,7 +47,6 @@ def singup_user(request):
         return JsonResponse(data)
 
     return redirect('index')
-
 
 def login_user(request):
     """

@@ -1,0 +1,8 @@
+<section class="kit__pagination">
+    {% if has_previous_page %}
+        <a href="{% url 'kit:kit' kit.name %}?page={{ request.GET.page | add:"-1" }}" class="kit__pagination--row kit__pagination--prev-page">❮</a>
+    {% endif %}
+    {% if has_next_page %}
+        <a href="{% url 'kit:kit' kit.name %}?page={{ request.GET.page | default:"1" | add:"1" }}" class="kit__pagination--row kit__pagination--next-page">❯</a>
+    {% endif %}
+</section>

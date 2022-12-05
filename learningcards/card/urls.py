@@ -1,10 +1,14 @@
 from django.urls import path
 
-from . import views
+from .views import (
+                   ShowNativeWord,
+                   ReplaceImg,
+                   CheckAnswer,
+                   )
 
 app_name = "card"
 urlpatterns = [
-    path("show-native-word/<str:kit_name>", views.show_native_word, name="show_native_word"),
-    path("replace-img/<str:kit_name>", views.replace_img, name="replace_img"),
-    path("check-answer/<str:kit_name>", views.check_answer, name="check_answer"),
+    path("show-native-word/<str:kit_name>", ShowNativeWord.as_view(), name="show_native_word"),
+    path("replace-img/<str:kit_name>", ReplaceImg.as_view(), name="replace_img"),
+    path("check-answer/<str:kit_name>", CheckAnswer.as_view(), name="check_answer"),
 ]

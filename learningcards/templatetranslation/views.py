@@ -1,12 +1,15 @@
-from django.shortcuts import render
 from django.http import JsonResponse
 from templatetranslation.models import TemplateTranslation
+from django.views import View
 
 # Create your views here.
-def get_translate_template(request, view_name):
+class GetTranslateTemplate(View):
+    """
+        Get the elements in Spanish and English. Filtering by its view and authentication.
+    """
 
-    if request.method == "POST":
-        tplt_translation_many = TemplateTranslation.objects.filter(view=view_name)
+    def post(self, request, *args, **kwargs):
+        tplt_translation_many = TemplateTranslation.objects.filter(view=self.kwargs['view_name'])
         tplt_translation = tplt_translation_many.filter(is_user_authenticated=request.user.is_authenticated)[0]
         elements_translation = tplt_translation.elementstranslation.values('selector', 'spanish_text', 'english_text', 'multiple')
 

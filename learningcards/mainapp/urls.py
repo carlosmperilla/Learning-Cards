@@ -1,10 +1,10 @@
 from django.urls import path
 
-from . import views
+from .views import IndexPageView
 from kit.views import add_kit
 
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("", IndexPageView.as_view(), name="index"),
     path("add_kit/", add_kit, name="add_kit"),
 ]

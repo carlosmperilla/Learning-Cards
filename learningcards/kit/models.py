@@ -27,18 +27,24 @@ class Kit(models.Model):
         return self.name + ' - ' + str(self.pk)
 
     def generate_cards(self, kit_file):
+        """
+            Generates the letters associated with the language kit.
+        """
         cards = []
         for line in kit_file.readlines():
             clean_line = line.strip()
             if clean_line.decode('utf-8') in string.whitespace:
                 continue
             words = clean_line.decode('utf-8').split(':')[:2]
-            foreign_word = words[0].strip()
-            native_word = words[1].strip()
+            foreign_word = words[0].strip()[:51]
+            native_word = words[1].strip()[:51]
             cards.append(Card(foreign_word = foreign_word, native_word = native_word, kit=self))
         kit_file.close()
         Card.objects.bulk_create(cards)
 
     def put_successful(self):
+        """
+            Calculate and update the value of successful
+        """
         self.successful = round(mean(success_value[0] for success_value in self.cards.values_list('success')))
         self.save(update_fields=['successful'])

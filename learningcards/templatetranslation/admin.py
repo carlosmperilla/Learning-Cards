@@ -2,7 +2,6 @@ from django.contrib import admin
 from .models import TemplateTranslation, ElementTranslation
 
 class ElementTranslationInline(admin.TabularInline):
-    # model = ElementTranslation
     model = ElementTranslation.templatetranslation.through
     extra = 3
 

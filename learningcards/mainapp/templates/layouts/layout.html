@@ -17,12 +17,10 @@
         <meta property="og:locale:alternate" content="es_US" />
         <link rel="icon" href="{% static 'icons/favicon.png' %}" type="image/png">
         <link rel="shortcut icon" href="{% static 'icons/favicon.png' %}" type="image/png">
-        <link rel="stylesheet" href="{% static 'css/movil_styles.css' %}" rel="preload" as="style">
         <link rel="stylesheet" href="{% static 'css/icons.css' %}" rel="preload" as="style"> 
-        {% comment %} 
-        <link rel="stylesheet" href="{% static 'css/styles.css' %}" rel="preload" as="style">
-        <link rel="stylesheet" href="{% static 'css/tablet_styles.css' %}" media="screen and (max-width:800px)">
-        {% endcomment %}
+        <link rel="stylesheet" href="{% static 'css/movil_styles.css' %}" rel="preload" as="style">
+        <link rel="stylesheet" href="{% static 'css/tablet_styles.css' %}" media="screen and (min-width:650px)">
+        <link rel="stylesheet" href="{% static 'css/desktop_styles.css' %}" media="screen and (min-width:900px)">
     </head>
 
     <body>
@@ -34,10 +32,10 @@
             {% block content %}
             {% endblock content %}
         </main>
-        {% if request.user.is_authenticated %}
-            <sidebar id="sidebar__menu">
+        {% if request.user.is_authenticated and kits and is_index %}
+            <aside id="sidebar__menu">
                 {% include 'snippets/content_sidebar.html' %}
-            </sidebar>
+            </aside>
         {% endif %}
         <footer>
             {% include 'snippets/content_footer.html' %}

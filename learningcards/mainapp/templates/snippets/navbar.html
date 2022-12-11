@@ -6,9 +6,11 @@
     <div class="add-button__content">
         <button class="icon-plus addKit__button--show-dialog dialog__button"></button>
     </div>
-    <div class="sidebar-button__content">
-        <button class="icon-wrench"></button>
-    </div>
+    {% if kits %}
+        <div class="sidebar-button__content">
+            <button class="icon-wrench"></button>
+        </div>
+    {% endif %}
 {% endif %}
 
 {% if is_kit %}

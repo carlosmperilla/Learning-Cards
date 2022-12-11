@@ -129,6 +129,7 @@ header .gadgets__content .lang-option__text {
     border: 1px solid var(--nav--color);
     border-radius: 5px;
     padding: 2px;
+    user-select: none;
 }
 
 header .gadgets__content .lang-option__text:last-child {
@@ -395,6 +396,8 @@ main .main__content .main__content__call-to-action {
         "footer";
     grid-template-rows: 1fr 4fr 1fr;
     contain: content;
+    max-width: 350px;
+    margin: 0 auto;
 }
 
 .kit__content .kit__content__name {
@@ -530,6 +533,8 @@ main .main__content .main__content__call-to-action {
     grid-template-rows: 1fr 2fr 1fr 1fr;
     contain: content;
     background-color: lightblue;
+    max-width: 450px;
+    margin: 0 auto;
 }
 
 .main__content__cards .card__content .card__content__foreign-word {
@@ -975,6 +980,11 @@ dialog .modal__content__description {
     overflow: auto;
     display: flex;
     flex-direction: column;
+    /* justify-content: space-evenly; */
+}
+
+dialog.logIn__modal .modal__content__description ,
+dialog.signUp__modal .modal__content__description {
     justify-content: space-evenly;
 }
 
@@ -1308,5 +1318,91 @@ dialog .modal__content__description ul li {
     100% {
         top: -200px;
         display: none;
+    }
+}
+
+/* DIALOG HOWTOUSE */
+.howToUse__modal .modal__content__description details {
+    margin-bottom: 20px;
+}
+
+.howToUse__modal .modal__content__description details summary {
+    padding-left: .5em;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #d6bf8e;
+    color: #6d5d0c;
+}
+
+.howToUse__modal .modal__content__description details summary:hover {
+    filter: brightness(.9)
+}
+
+.howToUse__modal .modal__content__description details summary:active {
+    filter: brightness(1.1)
+}
+
+.howToUse__modal .modal__content__description details h3 {
+    display: inline;
+    white-space: break-spaces;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.howToUse__modal .modal__content__description details summary + ul,
+.howToUse__modal .modal__content__description details summary + p {
+    margin-top: 8px;
+}
+
+.howToUse__modal .modal__content__description details li,
+.howToUse__modal .modal__content__description details p {
+    margin-left: .5em;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 495px) {
+    #sidebar__menu ul li button, 
+    header #principal__menu ul li button {
+        font-size: 5rem;
+    }
+
+    .main__content__call-to-action button {
+        font-size: xxx-large;
+    }
+
+    .main__content__cards .card__content .card__content__foreign-word button {
+        font-size: 5rem;
+        padding-left: .5em;
+    }
+
+    .main__content__cards .card__content .card__content__check .form__validate-word button {
+        font-size: 6rem;
+        padding-left: 0.4em;
+    }
+
+    .main__content__cards .card__content__img .card__state {
+        font-size: 5rem;
+    }
+
+    .main__content__cards .card__content__img .card--renew-img > span {
+        font-size: 4rem;
+    }
+
+    .main__content__cards .card__content .card__content__score .card__content__score--hits .card__content__score--hits-text,
+    .main__content__cards .card__content .card__content__score .card__content__score--mistakes .card__content__score--mistakes-text {
+        font-size: 2.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main__content__cards .card__content .card__content__foreign-word h3 {
+        font-size: 4rem;
+    }
+    
+    .main__content__cards .card__content .card__content__score .card__content__score--hits .card__content__score--hits-value,
+    .main__content__cards .card__content .card__content__score .card__content__score--mistakes .card__content__score--mistakes-value {
+        font-size: 5rem;
     }
 }

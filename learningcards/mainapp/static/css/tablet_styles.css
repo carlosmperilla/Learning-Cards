@@ -1,0 +1,153 @@
+body {
+    grid-template-rows:  var(--header--height) 1fr 50px;
+}
+
+header .burger-button__content {
+    display: none;
+}
+
+header #principal__menu {
+    display: flex;
+    position: relative;
+    top: 0;
+    bottom: auto;
+    height: var(--header--height);
+    background-color: var(--header--bg-color);
+    order: -1;
+    align-items: center;
+}
+
+header #principal__menu ul {
+    flex-direction: row;
+}
+
+header #principal__menu ul li {
+    margin-right: 0;
+}
+
+header #principal__menu ul li button {
+    font-size: 2.8rem;
+    text-align: center;
+}
+
+header #principal__menu .kit-navbar__li, 
+header #principal__menu .user-navbar__li {
+    position: static;
+    font-size: 2.8rem;
+    margin-left: 0;
+    background-clip: content-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: brightness(1.5);
+}
+
+header #principal__menu .kit-navbar__li:active,
+header #principal__menu .user-navbar__li:active {
+    background-clip: content-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: brightness(1.8);
+}
+
+header #principal__menu .kit-navbar__li .kit-navbar__li--options,
+header #principal__menu .user-navbar__li .user-navbar__li--options {
+    -webkit-text-fill-color: initial;
+    font-size: 1.5em;
+}
+
+header #principal__menu .kit-navbar__li .kit-navbar__li--options {
+    width: max-content;
+}
+
+dialog .modal__content__description #form__addKit label, 
+dialog .modal__content__description #form__signup label, 
+dialog .modal__content__description #form__login label {
+    font-size: 3.6rem;
+}
+
+dialog .modal__content__description #form__signup {
+    margin-top: 30px;
+}
+
+dialog .modal__content__description .button__container button {
+    font-size: 3.6rem;
+}
+
+.addKit__modal .modal__content__description .addKit__final-button {
+    font-size: 4rem;
+    margin-bottom: 25px;
+    padding: 5px 25px;
+}
+
+.addKit__modal .modal__content__description #form__addKit,
+dialog .modal__content__description #form__signup,
+dialog .modal__content__description #form__login {
+    padding-top: 25px;
+}
+
+dialog .modal__content__description #form__addKit input,
+dialog .modal__content__description #form__signup input,
+dialog .modal__content__description #form__login input {
+    font-size: 2.8rem;
+    height: 4rem;
+}
+
+dialog.contactMe__modal .modal__content__description {
+    font-size: 4rem;
+    gap: 20px;
+}
+
+.howToUse__modal .modal__content__description details h3 {
+    font-size: xx-large;
+}
+
+.howToUse__modal .modal__content__description details li,
+.howToUse__modal .modal__content__description details p {
+    font-size: 3rem;
+}
+
+.kit__principal-button--add {
+    position: absolute;
+    width: 40vw;
+    height: 40vw;
+    top: calc(50% - 20vw);
+    left: calc(50% - 20vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+footer {
+    height: 50px;
+    bottom: -1px;
+}
+
+footer .footer-menu__options button {
+    font-size: 2.6rem;
+}
+
+footer time {
+    font-size: 3.4rem;
+}
+
+.main__content__kits {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+.kit__content {
+    max-width: 450px;
+}
+
+.main__content__kit .kit__info {
+    font-size: 2.8rem;
+}
+
+.kit__pagination--input-page span {
+    font-size: 2.5rem;
+}
+
+dialog .modal__content__title {
+    font-size: 5vw;
+    font-weight: bold;
+}

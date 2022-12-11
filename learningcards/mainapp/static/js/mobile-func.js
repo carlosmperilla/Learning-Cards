@@ -12,6 +12,8 @@ const sidebarButtonBox = document.querySelector(".sidebar-button__content");
 const sidebarButton = document.querySelector(".sidebar-button__content button");
 const sidebarMenu = document.getElementById("sidebar__menu");
 
+const main = document.querySelector('main');
+
 let prevPositionStyle;
 
 function submenusCollapse(){
@@ -63,6 +65,9 @@ function showOrCollapseSidebarMenu() {
             document.querySelector('body > header').style.position = prevPositionStyle;
         }
         localStorage.setItem("sidebarMenuShow", "no");
+        if (screen.width > 650) {
+            submenusCollapse();
+        }
     }
 }
 
@@ -73,15 +78,25 @@ burgerButton.addEventListener("click", showOrCollapsePrincipalMenu);
 if (userButtonNavbar !== null){
     userButtonNavbar.addEventListener("click", () => {
         submenusUser.classList.toggle("visible");
+        if (screen.width > 650) {
+            submenusKit.classList.remove("visible");
+        }
     })
 }
 
 if (kitButtonNavbar !== null){
     kitButtonNavbar.addEventListener("click", () => {
         submenusKit.classList.toggle("visible");
+        if (screen.width > 650) {
+            submenusUser.classList.remove("visible");
+        }
     })
 }
 
 if (sidebarButton !== null){
     sidebarButton.addEventListener("click", showOrCollapseSidebarMenu);
 }
+
+main.addEventListener('click', () => {
+    submenusCollapse();
+})

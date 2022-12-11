@@ -1,0 +1,224 @@
+body {
+    grid-template-areas: "header header"
+                         "sidebar main"
+                         "footer footer";
+    grid-template-columns: auto 4fr;
+}
+
+header {
+    grid-area: header;
+    justify-content: flex-end;
+}
+
+header .randomize-button__content,
+header .home__content,
+header .add-button__content,
+header .sidebar-button__content,
+header .gadgets__content {
+    width: 10%;
+}
+
+header .sidebar-button__content {
+    display: none;
+}
+
+header #principal__menu {
+    width: 100%;
+    padding-left: 10px;
+    align-items: flex-start;
+}
+
+header #principal__menu ul {
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+header #principal__menu ul li {
+    padding: 15px;
+    width: max-content;
+}
+
+header #principal__menu .kit-navbar__li .kit-navbar__li--options.visible > .kit__li, 
+header #principal__menu .user-navbar__li .user-navbar__li--options.visible > .logout__li {
+    font-size: .4em;
+}
+
+.kit__principal-button--add {
+    width: 20vw;
+    height: 20vw;
+    font-size: 20vw;
+    top: calc(50% - 10vw);
+    left: calc(50% - 10vw);
+}
+
+main {
+    grid-area: main;
+}
+
+#sidebar__menu {
+    grid-area: sidebar;
+    display: flex;
+    position: relative;
+    top: 0;
+    width: 220px;
+    height: 100%;
+    z-index: 0;
+}
+
+#sidebar__menu ul {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    bottom: 60px;
+}
+
+#sidebar__menu ul li {
+    padding: 0;
+}
+
+#sidebar__menu ul li button {
+    font-size: 2rem;
+    padding: 15px;
+}
+
+
+footer {
+    grid-area: footer;
+    grid-template-columns: 5fr 1fr;
+}
+
+footer .footer-menu__options {
+    display: flex;
+    justify-content: space-evenly;
+    justify-content: flex-start;
+    gap: 30px;
+    padding-left: 30px;
+}
+
+dialog .modal__content__title {
+    font-size: 3vw;
+}
+
+dialog .modal__content__description #form__signup {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 50%;
+    height: 100%;
+}
+
+dialog .modal__content__description #form__login {
+    margin-bottom: 0;
+    width: 50%;
+}
+
+dialog.logIn__modal .modal__content__description,
+dialog.signUp__modal .modal__content__description {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+dialog .modal__content__description .form__error-box.visible {
+    height: 100%;
+    width: 30%;
+    padding: 0;
+}
+
+dialog .modal__content__description #form__addKit label,
+dialog .modal__content__description #form__signup label,
+dialog .modal__content__description #form__login label {
+    font-size: 2.6rem;
+}
+
+dialog .modal__content__description #form__addKit input, 
+dialog .modal__content__description #form__signup input,
+ dialog .modal__content__description #form__login input {
+    font-size: 1.8rem;
+    height: 3rem;
+}
+
+dialog .modal__content__description .button__container,
+dialog.signUp__modal .modal__content__description .button__container {
+    margin-top: 0;
+    width: fit-content;
+}
+
+dialog.addKit__modal .modal__content__description {
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.addKit__modal .modal__content__description .addKit__requirements {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.addKit__modal .modal__content__description #form__addKit {
+    height: 90%;
+}
+
+.addKit__modal .modal__content__description .addKit__final-button {
+    font-size: 3rem;
+}
+
+.howToUse__modal .modal__content__description details h3 {
+    font-size: x-large;
+}
+
+.howToUse__modal .modal__content__description details li, 
+.howToUse__modal .modal__content__description details p {
+    font-size: 2rem;
+}
+
+dialog.contactMe__modal .modal__content__description {
+    font-size: 2.6rem;
+}
+
+.main__content__kits {
+    position: relative;
+}
+
+#sidebar__menu {
+    background: #554284;
+}
+
+#sidebar__menu ul li {
+    background-color: #0000ff2e;
+    width: 100%;
+}
+
+main .main__content {
+    flex-direction: column;
+}
+
+.main__content__kits.action-button-space {
+    height: 100%;
+}
+
+.kit__button--delete.visible,
+.kit__button--edit.visible {
+    position: sticky;
+}
+
+.main__content__cards {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+.main__content__cards .card__content {
+    max-width: 350px;
+}
+
+.main__content__cards .card__content .card__content__foreign-word h3 {
+    font-size: 3.5rem;
+}
+
+.main__content__cards .card__content .card__content__check .form__validate-word button {
+    padding-left: .1em;
+}

@@ -96,6 +96,14 @@ def add_kit(request):
         Validate and add a kit.
     """
 
+    if request.method == "POST" and request.user.username == "Invitados":
+        if request.POST.get('lc-lang') == "es":
+            info_msg = "El modo Invitados, no tiene habilitada esta opción. Regístrese primero."
+        else:
+            info_msg = "Guest mode does not have this option enabled. Sign up first."
+        messages.info(request, info_msg)
+        return redirect("index")
+
     if request.method == "POST":
         message_error = None
         add_kit_form = AddKit(request.POST, request.FILES)
@@ -142,13 +150,22 @@ def edit_kits(request):
     """
         Edit the name, foreign language, and native language of one or more kits.
     """
+    
+    data = {"redirect_url" : reverse('index')}
+    edited_kits_data = json.loads(request.body)
+    lc_lang = edited_kits_data.pop("lc-lang")
+    
+    if request.method == "POST" and request.user.username == "Invitados":
+        if lc_lang == "es":
+            info_msg = "El modo Invitados, no tiene habilitada esta opción. Regístrese primero."
+        else:
+            info_msg = "Guest mode does not have this option enabled. Sign up first."
+        messages.info(request, info_msg)
+        return JsonResponse(data)
 
     if request.method == "POST":
         editable_fields = ['foreign_language', 'native_language', 'name']
-        data = {"redirect_url" : reverse('index')}
         kits_by_user = Kit.objects.filter(user__pk=request.user.pk)
-        edited_kits_data = json.loads(request.body)
-        lc_lang = edited_kits_data.pop("lc-lang")
         with transaction.atomic():
             for id, edited_fields in edited_kits_data.items():
                 try:
@@ -183,11 +200,20 @@ def delete_kits(request):
         Delete one to several kits.
     """
 
+    data = {"redirect_url" : reverse('index')}
+    delete_data = json.loads(request.body)
+    lc_lang = delete_data.pop("lc-lang")
+    
+    if request.method == "POST" and request.user.username == "Invitados":
+        if lc_lang == "es":
+            info_msg = "El modo Invitados, no tiene habilitada esta opción. Regístrese primero."
+        else:
+            info_msg = "Guest mode does not have this option enabled. Sign up first."
+        messages.info(request, info_msg)
+        return JsonResponse(data)
+
     if request.method == "POST":
-        data = {"redirect_url" : reverse('index')}
         kits_by_user = Kit.objects.filter(user__pk=request.user.pk)
-        delete_data = json.loads(request.body)
-        lc_lang = delete_data.pop("lc-lang")
         kits_to_delete_ids = [int(kit_id.replace("kit-", "")) for kit_id in delete_data['kitsToDelete']]
         try:
             kits_by_user.filter(id__in=kits_to_delete_ids).delete()

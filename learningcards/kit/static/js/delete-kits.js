@@ -45,9 +45,21 @@ function removeEditActions(kitBox){
 }
 
 function makeDeleteKitBox(kitBox){
+    let kitDeleteContent = kitBox.querySelector('.kit__item--delete-content');
     let kitDeleteCheckbox = kitBox.querySelector('.kit__item--delete-content input[type="checkbox"]');
     
     kitDeleteCheckbox.closest('.kit__item--delete-content').classList.add('visible');
+    kitDeleteContent.addEventListener("click", (event) => {
+        if (event.target.tagName !== "INPUT") {
+            let kitContent = event.target.closest('.kit__content');
+            kitDeleteCheckbox.checked = !kitDeleteCheckbox.checked;
+            if (kitDeleteCheckbox.checked) {
+                kitsToDelete.add(kitContent.id);
+            } else {
+                kitsToDelete.delete(kitContent.id);
+            }
+        }
+    });
     kitDeleteCheckbox.addEventListener("click", deleteTracking);
 
     removeEditActions(kitBox);

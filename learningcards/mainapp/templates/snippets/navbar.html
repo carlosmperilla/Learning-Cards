@@ -37,7 +37,7 @@
                 </button>
             </li>
         {% else %}
-            <li class="user-navbar__li">
+            <li class="user-navbar__li" tabindex="0">
                 <span class="icon-user"></span>&nbsp;
                 <span class="{% if request.user.username == "Invitados" %}username__guests{% endif %}">{{ user.username }}</span>
                 <ul class="user-navbar__li--options">
@@ -46,7 +46,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="kit-navbar__li">
+            <li class="kit-navbar__li" tabindex="0">
                 <span class="icon-stack"></span>&nbsp;Kits
                 <ul class="kit-navbar__li--options">
                     {% for kit in kits %}

@@ -231,3 +231,11 @@ main .main__content {
 .kit__content {
     width: max(300px, 350px);
 }
+
+.kit-navbar__li:focus-visible,
+.user-navbar__li:focus-visible,
+summary:focus-visible,
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #ff5538 !important;
+}

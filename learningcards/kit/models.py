@@ -5,7 +5,9 @@ from statistics import mean
 from django.contrib.auth.models import User
 
 from django.db import models
+from django.db.models.signals import pre_save
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.exceptions import ValidationError
 
 from card.models import Card
 
@@ -31,6 +33,7 @@ class Kit(models.Model):
             Generates the letters associated with the language kit.
         """
         cards = []
+        foreign_words = []
         for line in kit_file.readlines():
             clean_line = line.strip()
             if clean_line.decode('utf-8') in string.whitespace:
@@ -38,6 +41,9 @@ class Kit(models.Model):
             words = clean_line.decode('utf-8').split(':')[:2]
             foreign_word = words[0].strip()[:51]
             native_word = words[1].strip()[:51]
+            if foreign_word in foreign_words:
+                continue
+            foreign_words.append(foreign_word)
             cards.append(Card(foreign_word = foreign_word, native_word = native_word, kit=self))
         kit_file.close()
         Card.objects.bulk_create(cards)
@@ -48,3 +54,21 @@ class Kit(models.Model):
         """
         self.successful = round(mean(success_value[0] for success_value in self.cards.values_list('success')))
         self.save(update_fields=['successful'])
+
+def unique_name_per_user(sender, instance, *args, **kwargs):
+    """
+        Verify that the stock name is unique per user.
+    """
+    # print(instance.lc_lang)
+    lc_lang = getattr(instance, 'lc_lang', None)
+    kit_by_user = sender.objects.filter(user__pk=instance.user.pk)
+    kits_by_name = kit_by_user.filter(name=instance.name)
+    if kits_by_name.exists():
+        if not instance == kits_by_name.first():
+            if lc_lang == "es":
+                raise ValidationError("UNPS - Nombre de Kit ya registrado previamente.")
+            else:
+                raise ValidationError("UNPS - Kit name already registered previously.")
+
+
+pre_save.connect(unique_name_per_user, sender=Kit)

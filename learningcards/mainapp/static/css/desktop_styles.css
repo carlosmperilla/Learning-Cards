@@ -222,3 +222,12 @@ main .main__content {
 .main__content__cards .card__content .card__content__check .form__validate-word button {
     padding-left: .1em;
 }
+
+.main__content__cards .card__content .card__content__foreign-word button {
+    font-size: 5rem;
+    padding-left: .3em;
+}
+
+.kit__content {
+    width: max(300px, 350px);
+}

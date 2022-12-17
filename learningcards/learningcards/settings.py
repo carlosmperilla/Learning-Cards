@@ -36,6 +36,10 @@ INSTALLED_APPS = [
     'kit.apps.KitConfig',
     'card.apps.CardConfig',
     'users.apps.UsersConfig',
+    'api.apps.ApiConfig',
+    'rest_framework',
+    'markdown',
+    'drf_yasg',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -135,3 +139,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #Login URL
 LOGIN_URL='/login/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 6
+}

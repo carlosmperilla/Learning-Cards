@@ -106,6 +106,7 @@ def add_kit(request):
 
     if request.method == "POST":
         message_error = None
+        message_success = None
         add_kit_form = AddKit(request.POST, request.FILES)
         if add_kit_form.is_valid():
             kit = Kit(
@@ -114,6 +115,7 @@ def add_kit(request):
                 native_language = request.POST.get('native_language'),
                 user = request.user
                 )
+            kit.lc_lang = request.POST.get('lc-lang')
             try:
                 kit.full_clean()
                 kit.save()
@@ -126,10 +128,14 @@ def add_kit(request):
                 print(e)
                 import traceback
                 traceback.print_exc()
-                if request.POST.get('lc-lang') == "es":
-                    message_error = "Formato de Kit invalido, vuelva a intentarlo"
+
+                if e.messages[0].startswith('UNPS'):
+                    message_error = e.messages[0].replace('UNPS - ', '')
                 else:
-                    message_error = "Kit format invalid, try again"
+                    if request.POST.get('lc-lang') == "es":
+                        message_error = "Formato de Kit invalido, vuelva a intentarlo"
+                    else:
+                        message_error = "Kit format invalid, try again"
         else:
             if request.POST.get('lc-lang') == "es":
                 message_error = "Formulario invalido, vuelva a intentarlo"
@@ -171,6 +177,12 @@ def edit_kits(request):
                 try:
                     kit = kits_by_user.filter(id=int(id.replace("kit-", "")))
                     valid_edited_fields = {key:value for key, value in edited_fields.items() if key in editable_fields}
+                    if kit[0].name != valid_edited_fields.get('name', kit[0].name):
+                        if kits_by_user.filter(name=valid_edited_fields['name']).exists():
+                            if lc_lang == "es":
+                                raise ValidationError("UNPS - Nombre de Kit ya registrado previamente.")
+                            else:
+                                raise ValidationError("UNPS - Kit name already registered previously.")
                     form = EditKit(valid_edited_fields)
                     if form.is_valid():
                         kit.update(**valid_edited_fields)
@@ -180,10 +192,15 @@ def edit_kits(request):
                     print(e)
                     import traceback
                     traceback.print_exc()
-                    if lc_lang == "es":
-                        error_msg = "Ha existido un problema en la edición. Vuelva a intentarlo."
+
+                    if e.messages[0].startswith('UNPS'):
+                        error_msg = e.messages[0].replace('UNPS - ', '')
                     else:
-                        error_msg = "There was a problem in editing. Try again."
+                        if lc_lang == "es":
+                            error_msg = "Ha existido un problema en la edición. Vuelva a intentarlo."
+                        else:
+                            error_msg = "There was a problem in editing. Try again."
+
                     messages.error(request, error_msg)
                     return JsonResponse(data)
 

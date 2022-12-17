@@ -206,7 +206,6 @@ header #principal__menu ul li button {
     font-size: 3.5rem;
 }
 
-
 header #principal__menu ul li a {
     display: block;
     width: 100%;
@@ -397,6 +396,7 @@ main .main__content .main__content__call-to-action {
     grid-template-rows: 1fr 4fr 1fr;
     contain: content;
     max-width: 350px;
+    width: min(300px, 400px);
     margin: 0 auto;
 }
 
@@ -1359,6 +1359,54 @@ dialog .modal__content__description ul li {
 .howToUse__modal .modal__content__description details p {
     margin-left: .5em;
     margin-bottom: 10px;
+}
+
+/* HOVER STYLES */
+.home__content a:hover,
+.footer-menu__options button:hover,
+.add-button__content button:hover,
+.gadgets__content button:hover,
+.gadgets__content button:hover ~ span,
+.signup-navbar__li:hover,
+.login-navbar__li:hover {
+    filter: sepia(1);
+    cursor: pointer;
+}
+
+dialog .modal__content__description a:hover,
+header #principal__menu .user-navbar__li:hover,
+header #principal__menu .kit-navbar__li:hover {
+    filter: brightness(1.8);
+    cursor: pointer;
+}
+
+.main__content__cards .card__content .card__content__check .form__validate-word button:hover,
+.main__content__cards .card__content__img .card--renew-img:hover,
+.main__content__cards .card__content .card__content__foreign-word button:hover,
+.kit__item--delete-content.visible:hover,
+.enter-kit:hover,
+.kit__button--delete.visible:hover,
+.kit__button--edit.visible:hover,
+#sidebar__menu ul li button:hover,
+.addKit__modal .modal__content__description .addKit__final-button:hover,
+.kit__principal-button--add:hover,
+.main__content__call-to-action button:hover,
+.randomize-button__content button:hover,
+dialog .modal__button--close:hover,
+dialog .modal__content__description .button__container button:hover,
+header #principal__menu .user-navbar__li .user-navbar__li--options.visible li:hover,
+header #principal__menu .kit-navbar__li .kit-navbar__li--options.visible li:hover {
+    filter: brightness(1.2);
+    cursor: pointer;
+}
+
+.kit__pagination--input-page input:focus {
+    outline: 2px solid coral;
+}
+
+.main__content__cards .card__content .card__content__check .form__validate-word input:focus {
+    outline: none;
+    box-shadow: inset 5px 5px 15px #e2cc43;
 }
 
 @media screen and (min-width: 495px) {

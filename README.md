@@ -42,7 +42,7 @@ Ejecutando el siguiente script se puede probar el funcionamiento en local.
   en multiples dipositivos en local,  
   como moviles, aunque la ip local del router puede variar.
   
-  ```sh
+ ```sh
 git clone https://github.com/carlosmperilla/Learning-Cards.git
 cd Learning-Cards
 python -m venv lc-env

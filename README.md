@@ -65,6 +65,7 @@ If you need more control of the application the root user is:
 >Password: 12345
 
 I recommend changing the password to a more secure one or removing the root user and creating a new one.
+
 ---
 No, posee un botón en la pagina principal, que permite el ingreso como invitado/a.
 

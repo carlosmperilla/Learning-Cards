@@ -60,10 +60,9 @@ This way you can explore the basic operation, trying the Sports, Hobbies and Fru
 If you want to edit, delete, use the API with its functionality without restrictions, it is necessary to sign up.
 
 If you need more control of the application the root user is:
-
-Username: Charles
-
-Password: 12345
+>Username: Charles
+>
+>Password: 12345
 
 I recommend changing the password to a more secure one or removing the root user and creating a new one.
 ---

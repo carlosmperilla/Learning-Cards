@@ -17,8 +17,8 @@ const main = document.querySelector('main');
 let prevPositionStyle;
 
 function submenusCollapse(){
-    submenusUser.classList.remove("visible");
-    submenusKit.classList.remove("visible");
+    submenusUser?.classList.remove("visible");
+    submenusKit?.classList.remove("visible");
 }
 
 function showOrCollapsePrincipalMenu() {

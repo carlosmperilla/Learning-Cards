@@ -117,5 +117,35 @@ Si necesita más control de la aplicación el superusuario es:
 
 Recomiendo cambiar el password por uno más seguro o eliminar el superusario y crear uno nuevo.
 
+## Example images
 
+### Index
+<img src="https://raw.githubusercontent.com/carlosmperilla/Learning-Cards/main/example%20images/examples%20desktop/0%20-%20Inicio.png" alt="Inicio Learning Cards" width="600"/>
+
+### Index - English
+<img src="https://raw.githubusercontent.com/carlosmperilla/Learning-Cards/main/example%20images/examples%20desktop/1%20-%20Inicio%20Ingles.png" alt="Index Learning Cards" width="600"/>
+
+### Kits
+<img src="https://raw.githubusercontent.com/carlosmperilla/Learning-Cards/main/example%20images/examples%20desktop/2%20-%20kits.png" alt="Kits" width="600"/>
+
+### Kits - Edit
+<img src="https://raw.githubusercontent.com/carlosmperilla/Learning-Cards/main/example%20images/examples%20desktop/3%20-%20kits%20edit.png" alt="Kits - Edit" width="600"/>
+
+### Kits - Delete
+<img src="https://raw.githubusercontent.com/carlosmperilla/Learning-Cards/main/example%20images/examples%20desktop/4%20-%20kits%20delete.png" alt="Kits - Delete" width="600"/>
+
+### Cards - First Impression
+<img src="https://raw.githubusercontent.com/carlosmperilla/Learning-Cards/main/example%20images/examples%20desktop/5%20-%20cards%20first%20impression.png" alt="Cards - First Impression" width="600"/>
+
+### Cards - Second Impression
+<img src="https://raw.githubusercontent.com/carlosmperilla/Learning-Cards/main/example%20images/examples%20desktop/5%20-%20cards%20second%20impression.png" alt="Cards - Second Impression" width="600"/>
+
+### Responsive Design - Movil
+
+<p float="left" align="middle">
+  <img src="https://raw.githubusercontent.com/carlosmperilla/Learning-Cards/main/example%20images/examples%20movil/0%20-%20movil%20inicio.png" alt="Movil - Index" width="200"/>
+    <img src="https://raw.githubusercontent.com/carlosmperilla/Learning-Cards/main/example%20images/examples%20movil/1%20-%20movil%20kit.png" alt="Movil - Kit" width="200"/>
+  <img src="https://raw.githubusercontent.com/carlosmperilla/Learning-Cards/main/example%20images/examples%20movil/2%20-%20movil%20kit%20options.png" alt="Movil - Kit Options" width="200"/>
+  <img src="https://raw.githubusercontent.com/carlosmperilla/Learning-Cards/main/example%20images/examples%20movil/3%20-%20movil%20cards.png" alt="Movil - Cards" width="200"/>
+</p>
 

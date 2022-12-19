@@ -32,6 +32,7 @@ Get kits with with success between 12 and 80 percent.
 ```
 To test the API in the browser, you need to log in as a Guest (read only) or as a registered user (with all CRUD functions).
 Remember that to enter as a user you only have to press the Guests button on the main page.
+
 https://learningcards.pythonanywhere.com/api/
 
 ---

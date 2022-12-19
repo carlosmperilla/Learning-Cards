@@ -11,9 +11,9 @@ Flashcard vocabulary learning web application:
 ---
 Aplicación web de aprendizaje de vocabulario mediante flashcard:
 - Interfaz minimalista y responsiva.
-- Bilingüe, boton para cambiar entre inglés y español.
+- Bilingüe, botón para cambiar entre inglés y español.
 - Sistema de puntaje y progreso.
-- Tarjetas dinamicas y reactivas.
+- Tarjetas dinámicas y reactivas.
 - Imagenes aleatorias y recargables relacionadas con la palabra a aprender.
 - Paginación de tarjetas.
 - Rest API para manejo mayor control de los datos.

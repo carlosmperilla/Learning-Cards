@@ -22,11 +22,11 @@ Aplicación web de aprendizaje de vocabulario mediante flashcard:
 https://learningcards.pythonanywhere.com/
 
 ## URL To test the web application (API)
-Get all the cards with 2 hits and 1 mistake.
+Get all the cards with 2 hits and 1 mistake (For Guests).
 ```sh
    curl "https://learningcards.pythonanywhere.com/api/cards/all/?hits=2&mistakes=1" -u "Invitados:contraseña_invitados"
 ```
-Get kits with with success between 12 and 80 percent.
+Get kits with with success between 12 and 80 percent (For Guests).
 ```sh
    curl "https://learningcards.pythonanywhere.com/api/kits/?min_successful=12&max_successful=80" -u "Invitados:contraseña_invitados"
 ```
@@ -36,11 +36,11 @@ Remember that to enter as a user you only have to press the Guests button on the
 https://learningcards.pythonanywhere.com/api/
 
 ---
-Obtiene todas las cartas con 2 aciertos y 1 error.
+Obtiene todas las cartas con 2 aciertos y 1 error (Para Invitados).
 ```sh
     curl "https://learningcards.pythonanywhere.com/api/cards/all/?hits=2&mistakes=1" -u "Invitados:contraseña_invitados"
 ```
-Obtiene kits con un éxito entre el 12 y el 80 por ciento.
+Obtiene kits con un éxito entre el 12 y el 80 por ciento (Para Invitados).
 ```sh
     curl "https://learningcards.pythonanywhere.com/api/kits/?min_successful=12&max_successful=80" -u "Invitados:contraseña_invitados"
 ```

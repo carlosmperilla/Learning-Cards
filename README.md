@@ -18,6 +18,42 @@ Aplicación web de aprendizaje de vocabulario mediante flashcard:
 - Paginación de tarjetas.
 - Rest API para manejo mayor control de los datos.
 
+## URL To test the web application
+https://learningcards.pythonanywhere.com/
+
+## URL To test the web application (API)
+Get all the cards with 2 hits and 1 mistake.
+```sh
+   curl "https://learningcards.pythonanywhere.com/api/cards/all/?hits=2&mistakes=1" -u "Invitados:contraseña_invitados"
+```
+Get kits with with success between 12 and 80 percent.
+```sh
+   curl "https://learningcards.pythonanywhere.com/api/kits/?min_successful=12&max_successful=80" -u "Invitados:contraseña_invitados"
+```
+To test the API in the browser, you need to log in as a Guest (read only) or as a registered user (with all CRUD functions).
+Remember that to enter as a user you only have to press the Guests button on the main page.
+https://learningcards.pythonanywhere.com/api/
+
+---
+Obtiene todas las cartas con 2 aciertos y 1 error.
+```sh
+    curl "https://learningcards.pythonanywhere.com/api/cards/all/?hits=2&mistakes=1" -u "Invitados:contraseña_invitados"
+```
+Obtiene kits con un éxito entre el 12 y el 80 por ciento.
+```sh
+    curl "https://learningcards.pythonanywhere.com/api/kits/?min_successful=12&max_successful=80" -u "Invitados:contraseña_invitados"
+```
+Para probar la API en el navegador, debe iniciar sesión como invitado (solo lectura) o como usuario registrado (con todas las funciones CRUD).
+Recuerda que para ingresar como usuario solo debes presionar el botón de Invitados en la página principal.
+
+https://learningcards.pythonanywhere.com/api/
+
+## URL To test the web application (API-Swagger and ReDoc Documentation)
+https://learningcards.pythonanywhere.com/api/swagger/
+
+https://learningcards.pythonanywhere.com/api/redoc/
+
+
 ## Dependencies
 - Python 3.x
 

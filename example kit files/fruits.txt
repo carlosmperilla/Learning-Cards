@@ -1,0 +1,50 @@
+Apple:Manzana
+Almond:Almendra
+Apricot:Damasco
+Avocado:Aguacate
+Banana:Banana
+Raspberry:Zarzamora
+Blueberry:Arándano
+Cashew:Anacardo
+Cherry:Cereza
+Chestnut:Castaña
+Coconut:Coco
+Cranberry:Arándano rojo
+Currant:Grosella
+Date:Dátil
+Dragon fruit:Fruta del dragón
+Elderberry:Sauco
+Fig:Higo
+Gooseberry:Grosella silvestre
+Grape:Uva
+Grapefruit:Pomelo
+Guava:Guayaba
+Hazelnut:Avellana
+Honeydew:Melón chino
+Kiwfruiti:Kiwi
+Kumquat:Quinoto
+Lemon:Limón
+Lime:Lima
+Loquat:Níspero
+Lychee:Lichi
+Mango:Mango
+Melon:Melón
+Nut:Nuez
+Orange:Naranja
+Papaya:Papaya
+Passion fruit:Maracuyá
+Peach:Durazno
+Peanut:Cacahuete
+Pear:Pera
+Persimmon:Caqui
+Pineapple:Piña
+Pistachio:Pistacho
+Pomegranate:Granada
+Raspberry:Frambuesa
+Quince:Membrillo
+Red currant:Grosella roja
+Starfruit:Carambola
+Strawberry:Fresa
+Tamarind:Tamarindo
+Tangerine:Mandarina
+Watermelon:Sandía

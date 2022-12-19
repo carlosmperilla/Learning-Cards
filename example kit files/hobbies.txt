@@ -1,0 +1,84 @@
+Art:Arte
+Aerobics:Aerobics
+Archery:Tiro al blanco
+Backpacking:Mochilear
+Beekeeping:Apicultura
+Billiards:Billar
+Birdwatching:Observación de aves
+Board games:Juegos de mesa
+Bowling:Juego de bolos
+Brainteasers:Acertijos
+Bungee jumping:Bungee jumping
+Camping:Acampar
+Canoeing:Canotaje
+Card games:Juego de cartas
+Carpentry:Carpintería
+Checkers:Juego de damas
+Chess:Ajedrez
+Cooking:Cocinar
+Creative writing:Escritura
+Crochet:Tejido al crochet
+Crossword puzzles:Crucigramas
+Cycling:Ciclismo
+Dancing:Bailar
+Darts:Dardos
+Dice:Dados
+Do handcraft:Hacer manualidades
+Dominoes:Juego de dominó
+Drawing:Dibujar
+Embroidery:Bordado
+Engraving:Grabado
+Fishing:Pesca
+Gardening:Jardinería
+Going to the gym:Ir al gimnasio
+Hang-gliding:Ala delta
+Hanging out with friends:Salir con amigos
+Hiking:Senderismo
+Horseback riding:Equitación
+Jigsaw puzzles:Rompecabezas
+Jogging:Correr
+Juggling:Malabarismo
+Kayaking:Andar en kayak
+Knitting:Tejer
+Language learning:Aprender idiomas
+Listening to music:Escuchar música
+Marbles:Juego de canicas
+Martial arts:Artes marciales
+Model building:Construcción de modelos
+Mountaineering:Montañismo
+Mountain climbing:Escalar montañas
+Music:Música
+Origami:Origami
+Painting:Pintar
+Parachuting:Paracaidismo
+Paragliding:Parapente
+Playing a sport:Jugar un deporte
+Playing an instrument:Tocar un instrumento
+Photography:Fotografía
+Potholing:Espeleísmo
+Pottery:Alfarería
+Reading:Leer
+Rhythmic gymnastics:Gimnasia rítmica
+Riddles:Adivinanzas
+Rowing:Remo
+Running:Correr
+Sailing:Navegar
+Scuba diving:Buceo
+Sculpture:Escultura
+Sewing:Costura
+Singing:Cantar
+Skating:Patinar
+Skiing:Esquí
+Stamp collecting:Coleccionar estampillas
+Surfing:Surf
+Swimming:Nadar
+Table tennis:Ping Pong
+Tennis:Tenis
+Traveling:Viajar
+Trivia:Juego de preguntas
+Video games:Videojuegos
+Watching movies:Ver películas
+Watching TV:Ver televisión
+Wood carving:Talla en madera
+Working out:Hacer ejercicio
+Yoga:Yoga

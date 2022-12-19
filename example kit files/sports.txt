@@ -1,0 +1,100 @@
+acrobatics:acrobacia
+aerobics:ejercicio aeróbico
+aikido:aikido
+alpine skiing:esquí alpino
+archery:tiro con arco
+athletics:atletismo
+australian football:fútbol australiano
+badminton:bádminton
+baseball:béisbol
+basketball:baloncesto
+beach volleyball:vóleibol de playa
+biribol:biribol
+bodyboarding:bodyboard
+bodybuilding:fisicoculturismo
+boxing:boxeo
+bowling:bolos
+kayaking:canotaje
+car racing:automovilismo
+chess:ajedrez
+cricket:crícket
+croquet:croquet
+cycling:ciclismo
+curling:curlin
+darts:dardos
+diving:buceo
+horseback riding:hípica
+fencing:esgrima
+fishing:pesca
+fistball:fistball
+american football:fútbol americano
+golf:golf
+gymnastics:gimnasia
+handball:balonmano
+hang gliding:ala delta
+high jump:salto de altura
+hiking:senderismo
+javelin throw:lanzamiento de jabalina
+judo:judo
+karate:karate
+kickboxing:kickboxing
+kitesurfing:kitesurf
+kung fu:kung fu
+lacrosse:lacrosse
+long jump:salto en largo
+luge:luge
+martial arts:artes marciales
+motorboat racing:motonáutica
+motorcycling:motociclismo
+mountaineering:montañismo
+mountain biking:ciclismo de montaña
+ocean rowing:remo en el océano
+paddle tennis:pádel
+parachuting:paracaidismo
+paragliding:parapente
+parkour:parkour
+pole vaulting:salto con pértiga
+polo:polo
+race walking:marcha atlética
+racketball:ráquetbol
+rhythmic gymnastics:gimnasia rítmica
+ringette:ringette
+rings:anillas
+rinkball:rinkball
+riverboarding:riverboarding
+rock climbing:escalada
+roller hockey:hockey sobre patines
+rope climbing:escalada con cuerda
+rowing:remo
+rugby:rugby
+running:correr
+sailing:vela
+sandboarding:sandboarding
+scuba diving:buceo
+seatball:seatball
+skating:patinaje
+skateboarding:skateboard
+skiing:esquí
+sky surfing:sky surfing
+snorkeling:esnórquel
+snowboarding:snowboard
+soccer:fútbol
+softball:sóftbol
+speed skating:patinaje de velocidad sobre hielo
+squash:squash
+streching:estiramiento
+sumo:sumo
+surfing:surf
+swimming:natación
+table tennis:tenis de mesa
+taekwondo:taekwondo
+tennis:tenis
+trampolining:salto de trampolín
+vigoro:vigoro
+volleyball:vóleibol
+waterpolo:waterpolo
+water skiing:esquí acuático
+weight lifting:levantamiento de pesas
+windsurfing:tabla a vela
+wrestling:lucha
+wushu:wushu

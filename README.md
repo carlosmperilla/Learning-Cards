@@ -7,7 +7,7 @@ Flashcard vocabulary learning web application:
 - Dynamic and reactive cards.
 - Random and rechargeable images related to the word to learn.
 - Pagination of cards.
-- Rest API for handling greater control of the data.
+- Rest API for greater handling of the data.
 ---
 Aplicación web de aprendizaje de vocabulario mediante flashcard:
 - Interfaz minimalista y responsiva.
@@ -16,7 +16,7 @@ Aplicación web de aprendizaje de vocabulario mediante flashcard:
 - Tarjetas dinámicas y reactivas.
 - Imagenes aleatorias y recargables relacionadas con la palabra a aprender.
 - Paginación de tarjetas.
-- Rest API para manejo mayor control de los datos.
+- Rest API para mayor manejo de los datos.
 
 ## URL To test the web application
 https://learningcards.pythonanywhere.com/
